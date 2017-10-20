@@ -440,14 +440,29 @@ public class MxFileReader implements Closeable
                                 MxStructDataObject structDataObject = new MxStructDataObject(dataObject);
                                 
                                 // Evaluate field names length
-                                FieldNameLengthSubelement lenField = new FieldNameLengthSubelement().read(mi);
-                                int len = lenField.getLength();
+                                FieldNameLengthSubelement lenField;
+                                int                       len = 0;
+                                
+                                try {
+                                        lenField = new FieldNameLengthSubelement().read(mi);
+                                        len = lenField.getLength();
+                                } catch (DataTypeException e) {
+                                        // TODO Auto-generated catch block
+                                        e.printStackTrace();
+                                }
                                 
                                 // Evaluate field names
-                                FieldNamesSubelement namesField = new FieldNamesSubelement().read(mi,len);
-                                
-                                // TODO: Is this list ordered in any way??
-                                String[] names = namesField.listNames();
+                                FieldNamesSubelement namesField;
+                                String[]             names = null;
+                                try {
+                                        namesField = new FieldNamesSubelement().read(mi,len);
+                                        
+                                        // TODO: Is this list ordered in any way??
+                                        names      = namesField.listNames();
+                                } catch (DataTypeException e) {
+                                        // TODO Auto-generated catch block
+                                        e.printStackTrace();
+                                }
                                 
                                 // Evaluate struct data fields
                                 structDataObject.data_vec = evalStructArrayData(in,names);
@@ -478,8 +493,21 @@ public class MxFileReader implements Closeable
         
         private SparseRaw evalSparseArrayData(MyDataInputStream in, boolean isComplex)
         {
-                RowIndexSubelement    rowIndices = new RowIndexSubelement().read(in);
-                ColumnIndexSubelement colIndices = new ColumnIndexSubelement().read(in);
+                RowIndexSubelement rowIndices = null;
+                try {
+                        rowIndices = new RowIndexSubelement().read(in);
+                } catch (DataTypeException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                }
+                
+                ColumnIndexSubelement colIndices = null;
+                try {
+                        colIndices = new ColumnIndexSubelement().read(in);
+                } catch (DataTypeException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                }
                 
                 int[][] coord = transform(rowIndices.getRowIndices(),colIndices.getRowIndices());
                 
