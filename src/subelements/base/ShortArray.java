@@ -47,7 +47,7 @@ public class ShortArray implements DataArray
                 
                 int    offset = 0;
                 
-                if ( byte_order.equals(ByteOrder.BIG_ENDIAN) )
+                if ( byte_order == ByteOrder.BIG_ENDIAN )
                 {
                         for ( int i = 0; i < len; i++ )
                         {
