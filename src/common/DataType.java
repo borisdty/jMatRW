@@ -15,7 +15,11 @@ import java.util.Map;
  */
 public enum DataType
 {
-        /* MAT-File Data Types */
+        /*
+         * MAT-File Data Types
+         * The value of the Data Type field in the data element tag
+         * identifies the data type used to store the data in the MAT-file.
+         */
         miINT8      ( 1, 1, "int8"),
         miUINT8     ( 2, 1, "uint8"),
         miINT16     ( 3, 2, "int16"),
@@ -32,8 +36,8 @@ public enum DataType
         miUTF16     (17, 2, "utf16"),
         miUTF32     (18, 4, "utf32");
         
-        private static final Map<Integer,DataType> lookup 
-        = new HashMap<Integer,DataType>();
+        private static final Map<Integer,DataType> lookup =
+                        new HashMap<Integer,DataType>();
         
         static
         {
@@ -42,7 +46,7 @@ public enum DataType
         }
         
         private int    index;
-        private int    size;  // bytes the data type allocates
+        private int    size;  // number of bytes that the data type allocates
         private String name;  // alternative string representation
         
         private DataType(int index, int size, String name)
