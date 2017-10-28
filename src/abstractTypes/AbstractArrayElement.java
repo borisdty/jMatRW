@@ -90,6 +90,11 @@ public abstract class AbstractArrayElement extends AbstractDataElement
                 arrayFlagsSubelement.setClassType(type);
         }
         
+        public void setSparseFlag(boolean flag)
+        {
+                arrayFlagsSubelement.setSparseFlag(flag);
+        }
+        
         public void setComplexFlag(boolean flag)
         {
                 arrayFlagsSubelement.setComplexFlag(flag);
