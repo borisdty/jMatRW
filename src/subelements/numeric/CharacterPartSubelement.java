@@ -62,7 +62,7 @@ public class CharacterPartSubelement extends AbstractDataElement
                 {
                         char value = data.charAt(i);
                         
-                        if ( byte_order.equals(ByteOrder.BIG_ENDIAN) )
+                        if ( byte_order == ByteOrder.BIG_ENDIAN )
                         {
                                 b[offset++] = (byte)(value >> 8);
                                 b[offset++] = (byte)(value >> 0);
