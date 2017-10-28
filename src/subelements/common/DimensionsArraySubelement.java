@@ -89,7 +89,7 @@ public class DimensionsArraySubelement extends AbstractDataElement
                 {
                         int n = data[i];
                         
-                        if ( byte_order.equals(ByteOrder.BIG_ENDIAN) )
+                        if ( byte_order == ByteOrder.BIG_ENDIAN )
                         {
                                 b[offset++] = (byte)(n >> 24);
                                 b[offset++] = (byte)(n >> 16);
