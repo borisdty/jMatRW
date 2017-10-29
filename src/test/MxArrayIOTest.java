@@ -30,7 +30,13 @@ import array.MxSparseArray;
 import array.MxStructArray;
 
 /**
- * Testing
+ * Testing of reading and writing Matlab .mat data files
+ * The test usually consist of
+ * 1) Writing a data element (matrix/vector, structures...) in Java to a .mat files A
+ * 2) Defining a reference object B as expected to be returned by reading this file again
+ * 3) Reading the written file A again as well as a Matlab generated data file C with identical data content
+ * 4) Comparing element-wise the reading result from file A and C and reference object B
+ * 5) Byte-level comparison of file A and C
  * 
  * @author Boris Dortschy (<a href="mailto:bodo.pub@gmail.com">bodo.pub@gmail.com</a>)
  */
@@ -1282,9 +1288,11 @@ public class MxArrayIOTest
                 jfreader.close();
                 mfreader.close();
                 
-                // The following test fails, because for sparse arrays, Matlab sets a bit
-                // in the flag field (bit 4, 0x10) that is not documented
-                //assertTrue( CompareBinary.compare(readName, writeName, 128) );
+                // The following test would usually fail, because for sparse arrays, Matlab sets a bit
+                // in the flag field (bit 4, 0x10). This part of the flag field is declared
+                // undefined by MathWorks and not documented further.
+                // By extending the flags in class ArrayFlagsSubelement, we fixed it.
+                assertTrue( CompareBinary.compare(readName, writeName, 128) );
                 
                 String s1 = "Test if value read from j-file equals reference";
                 String s2 = "Test if value read from m-file equals reference";
@@ -1356,9 +1364,10 @@ public class MxArrayIOTest
                 jfreader.close();
                 mfreader.close();
                 
-                // The following test fails, because for sparse arrays, Matlab sets a bit
-                // in the flag field (bit 4, 0x10) that is not documented
-                //assertTrue( CompareBinary.compare(readName, writeName, 128) );
+                // The following test would usually fail, because for sparse arrays, Matlab sets a bit
+                // in the flag field (bit 4, 0x10) that is not documented.
+                // By extending the flags in class ArrayFlagsSubelement, we fixed it.
+                assertTrue( CompareBinary.compare(readName, writeName, 128) );
                 
                 String s1 = "Test if value read from j-file equals reference";
                 String s2 = "Test if value read from m-file equals reference";
@@ -1471,10 +1480,10 @@ public class MxArrayIOTest
                 m1 = jfreader.getVariable(varname);
                 m2 = mfreader.getVariable(varname);
                 
-                assertTrue( CompareBinary.compare(readName, writeName, 128) );
-                
                 jfreader.close();
                 mfreader.close();
+                
+                assertTrue( CompareBinary.compare(readName, writeName, 128) );
                 
                 // For structures MATLAB re-inserts field names
                 refvec.name = "VecX_a";
