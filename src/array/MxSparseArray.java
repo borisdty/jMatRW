@@ -49,6 +49,7 @@ public class MxSparseArray extends AbstractArrayElement
                 int[] dims = entries.getDimensions();
                 
                 super.setDimensions(dims);
+                super.setSparseFlag(true);
                 super.setNzMax(entries.getNumElements());
                 
                 SparseElement[] a = entries.toArray(); // Entries are in column order
@@ -100,6 +101,7 @@ public class MxSparseArray extends AbstractArrayElement
                 
                 int[] dims = entries.getDimensions();
                 
+                super.setSparseFlag(true);
                 super.setComplexFlag(true);
                 super.setDimensions(dims);
                 super.setNzMax(entries.getNumElements());

@@ -148,7 +148,7 @@ public class MxFileHeader
                 // For version 5 files, it is 0x20 (ASCII 32 = space)
                 offset += 8;
                 
-                if ( byte_order.equals(ByteOrder.BIG_ENDIAN) )
+                if ( byte_order == ByteOrder.BIG_ENDIAN )
                 {
                         // write Version
                         dest[offset++] = (byte)(version >> 8);

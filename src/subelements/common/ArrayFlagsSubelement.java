@@ -42,10 +42,20 @@ public class ArrayFlagsSubelement extends AbstractDataElement
         private MxClassID      classType;
         private int            nzmax;
         
+        /**
+         * In Matlab R2016a, if a sparse array is saved, bit 4 (0x10) of the byte
+         * containing the flag bits is set. This was found by byte-wise comparison of
+         * Matlab generated .mat files. There is no documentation found about
+         * this behavior. Since the bit does not collide with other flag, we simply
+         * extend the possible flag by this one here.
+         */
+        private boolean        flag_SPARSE;
+        
         public ArrayFlagsSubelement()
         {
                 super(DataType.miUINT32);
                 
+                flag_SPARSE  = false;
                 flag_COMPLEX = false;
                 flag_GLOBAL  = false;
                 flag_LOGICAL = false;
@@ -60,12 +70,14 @@ public class ArrayFlagsSubelement extends AbstractDataElement
                 this.classType = classType;
         }
         
+        public boolean   getSparseFlag()  { return flag_SPARSE; }
         public boolean   getComplexFlag() { return flag_COMPLEX; }
         public boolean   getGlobalFlag()  { return flag_GLOBAL;  }
         public boolean   getLogicalFlag() { return flag_LOGICAL; }
         public MxClassID getClassType()   { return classType; }
         public int       getNzMax()       { return nzmax; }
         
+        public void setSparseFlag (boolean flag)   { flag_SPARSE  = flag; }
         public void setComplexFlag(boolean flag)   { flag_COMPLEX = flag; }
         public void setGlobalFlag (boolean flag)   { flag_GLOBAL  = flag; }
         public void setLogicalFlag(boolean flag)   { flag_LOGICAL = flag; }
@@ -77,6 +89,7 @@ public class ArrayFlagsSubelement extends AbstractDataElement
         {
                 String str = "";
                 str += super.toString();
+                str += " flag_SPARSE = "  + flag_SPARSE;
                 str += " flag_COMPLEX = " + flag_COMPLEX;
                 str += " flag_Global = "  + flag_GLOBAL;
                 str += " flag_Logical = " + flag_LOGICAL;
@@ -95,11 +108,12 @@ public class ArrayFlagsSubelement extends AbstractDataElement
                 byte[] b = new byte[super.getDataLength()];
                 
                 byte flags = 0;
+                flags |= (flag_SPARSE  == true) ? 0x10 : 0x00;
                 flags |= (flag_COMPLEX == true) ? 0x08 : 0x00;
                 flags |= (flag_GLOBAL  == true) ? 0x04 : 0x00;
                 flags |= (flag_LOGICAL == true) ? 0x02 : 0x00;
                 
-                if ( byte_order.equals(ByteOrder.BIG_ENDIAN) )
+                if ( byte_order == ByteOrder.BIG_ENDIAN )
                 {
                         b[0] = 0;
                         b[1] = 0;
@@ -164,6 +178,7 @@ public class ArrayFlagsSubelement extends AbstractDataElement
                         return null;
                 }
                 
+                setSparseFlag ((flags & 0x10) > 0);
                 setComplexFlag((flags & 0x08) > 0);
                 setGlobalFlag ((flags & 0x04) > 0);
                 setLogicalFlag((flags & 0x02) > 0);

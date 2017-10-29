@@ -90,7 +90,7 @@ public class DataTagField
                 {
                         dest = new byte[4];
                         
-                        if ( byte_order.equals(ByteOrder.BIG_ENDIAN) )
+                        if ( byte_order == ByteOrder.BIG_ENDIAN )
                         {
                                 // type and size are in exchanged order
                                 dest[0] = (byte)(numOfBytes >> 8);
@@ -111,7 +111,7 @@ public class DataTagField
                 {
                         dest = new byte[8];
                         
-                        if ( byte_order.equals(ByteOrder.BIG_ENDIAN) )
+                        if ( byte_order == ByteOrder.BIG_ENDIAN )
                         {
                                 dest[0] = (byte)(dataType.getIndex() >> 24);
                                 dest[1] = (byte)(dataType.getIndex() >> 16);

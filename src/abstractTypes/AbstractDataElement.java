@@ -152,7 +152,8 @@ public abstract class AbstractDataElement
                 //int b = ((size/sizeOfDataType())%(width/sizeOfDataType())) * sizeOfDataType();
                 //int padding = (b != 0) ? width-b : 0;
                 
-                int b = size - width * (size/width);
+                // Alternative for width=8: padding = ((size+7)/8)*8 - size = 7-rem(size+7,8) = 7-(size+7)%8
+                int b = size % width; // size - width * (size/width);
                 int padding = (width-b) % width;
                 
                 return padding;

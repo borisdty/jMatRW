@@ -15,7 +15,11 @@ import java.util.Map;
  */
 public enum MxClassID
 {
-        /* MATLAB Array Types (Classes) */
+        /* MATLAB Array Types (Classes)
+         * The value of the Class field identifies the MATLAB data type.
+         * The value of the Data Type field in the data element tag identifies
+         * the data type used to actually store the data in the MAT-file.
+         */
         mxCELL_CLASS    (1),
         mxSTRUCT_CLASS  (2),
         mxOBJECT_CLASS  (3),
@@ -32,8 +36,8 @@ public enum MxClassID
         mxINT64_CLASS   (14),
         mxUINT64_CLASS  (15);
         
-        private static final Map<Integer,MxClassID> lookup
-        = new HashMap<Integer,MxClassID>();
+        private static final Map<Integer,MxClassID> lookup =
+                        new HashMap<Integer,MxClassID>();
         
         static
         {
@@ -56,17 +60,5 @@ public enum MxClassID
         public static MxClassID get(int value)
         {
                 return lookup.get(value);
-        }
-        
-        @Deprecated
-        public boolean DELETE_ME_equals( MxClassID other )
-        {
-                if ( other == null )
-                        return false;
-                
-                if ( value != other.value )
-                        return false;
-                
-                return true;
         }
 }

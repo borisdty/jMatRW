@@ -9,6 +9,9 @@ import java.util.Arrays;
  */
 public class MxDataObject
 {
+        // TODO: List below Would need to be extended by
+        // boolean sparse;
+        // to read out the sparse bit flag.
         public  boolean     complex;
         public  boolean     global;
         public  boolean     logical;

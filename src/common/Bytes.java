@@ -37,7 +37,7 @@ public class Bytes
         {
                 char out = 0;
                 
-                if ( byte_order.equals(ByteOrder.BIG_ENDIAN) )
+                if ( byte_order == ByteOrder.BIG_ENDIAN )
                 {
                         out |= (in[offset+0]&0xFF) <<  8;
                         out |= (in[offset+1]&0xFF) <<  0;
@@ -55,7 +55,7 @@ public class Bytes
         {
                 short out = 0;
                 
-                if ( byte_order.equals(ByteOrder.BIG_ENDIAN) )
+                if ( byte_order == ByteOrder.BIG_ENDIAN )
                 {
                         out |= (in[offset+0]&0xFF) <<  8;
                         out |= (in[offset+1]&0xFF) <<  0;
@@ -73,7 +73,7 @@ public class Bytes
         {
                 int out = 0;
                 
-                if ( byte_order.equals(ByteOrder.BIG_ENDIAN) )
+                if ( byte_order == ByteOrder.BIG_ENDIAN )
                 {
                         out |= (in[offset+0]&0xFF) <<  8;
                         out |= (in[offset+1]&0xFF) <<  0;
@@ -95,7 +95,7 @@ public class Bytes
                 
                 int out = 0;
                 
-                if ( byte_order.equals(ByteOrder.BIG_ENDIAN) )
+                if ( byte_order == ByteOrder.BIG_ENDIAN )
                 {
                         for(int i = offset; i < (offset + Integer.BYTES); i++)
                         {
@@ -119,7 +119,7 @@ public class Bytes
         {
                 long out = 0;
                 
-                if ( byte_order.equals(ByteOrder.BIG_ENDIAN) )
+                if ( byte_order == ByteOrder.BIG_ENDIAN )
                 {
                         out |= (in[offset+0]&0xFFL) << 24;
                         out |= (in[offset+1]&0xFFL) << 16;
@@ -145,7 +145,7 @@ public class Bytes
                 
                 long out = 0;
                 
-                if ( byte_order.equals(ByteOrder.BIG_ENDIAN) )
+                if ( byte_order == ByteOrder.BIG_ENDIAN )
                 {
                         for(int i = offset; i < offset + Long.BYTES; i++)
                         {
