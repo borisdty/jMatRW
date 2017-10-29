@@ -20,7 +20,7 @@ public class DataTagFieldReader
         private boolean   isShortTag;
         private byte[]    tagData;
         
-        private final boolean isBigEndian;
+        private ByteOrder byteOrder;
         
         /**
          * @param type
@@ -28,7 +28,7 @@ public class DataTagFieldReader
          */
         public DataTagFieldReader(ByteOrder b)
         {
-                this.isBigEndian = b.equals(ByteOrder.BIG_ENDIAN);
+                this.byteOrder = b;
         }
         
         public DataType getDataType()
@@ -66,6 +66,7 @@ public class DataTagFieldReader
                 return tagData;
         }
         
+        @Override
         public String toString()
         {
                 String str = "";
@@ -78,16 +79,21 @@ public class DataTagFieldReader
                 return str;
         }
         
+        /**
+         * Evaluates all 8 bytes of a data element tag field 
+         * @param tagBytes the first 8 bytes of a data element
+         * @return
+         */
         public boolean read(byte[] tagBytes)
         {
                 if ( checkTagConsistency(tagBytes) == false )
                         return false;
                 
-                if ( isShortElement(tagBytes) )
+                if ( isSmallElement(tagBytes) )
                 {
                         dataType = DataType.get(tagBytes[3] & 0xFF);
                         numOfBytes = tagBytes[1] & 0xFF;
-                        if (!isBigEndian)
+                        if (byteOrder != ByteOrder.BIG_ENDIAN)
                         {
                                 dataType = DataType.get(tagBytes[0] & 0xFF);
                                 numOfBytes = tagBytes[2] & 0xFF;
@@ -101,15 +107,12 @@ public class DataTagFieldReader
                 else
                 {
                         dataType = DataType.get(tagBytes[3] & 0xFF);
-                        if (!isBigEndian)
+                        if (byteOrder != ByteOrder.BIG_ENDIAN)
                         {
                                 dataType = DataType.get(tagBytes[0] & 0xFF);
                         }
                         
-                        ByteOrder byte_order = isBigEndian == true ?
-                                        ByteOrder.BIG_ENDIAN : ByteOrder.LITTLE_ENDIAN;
-                        
-                        numOfBytes = Bytes.toInt(tagBytes,4,byte_order);
+                        numOfBytes = Bytes.toInt(tagBytes,4,byteOrder);
                         tagSize  = 8;
                         
                         int b = numOfBytes % 8;
@@ -146,7 +149,7 @@ public class DataTagFieldReader
         
         private boolean checkTagConsistency(byte[] tagBytes)
         {
-                if (isBigEndian)
+                if (byteOrder == ByteOrder.BIG_ENDIAN)
                         return checkTagConsistencyBigEndian(tagBytes);
                 else
                 {
@@ -186,11 +189,32 @@ public class DataTagFieldReader
                 return true;
         }
         
-        private boolean isShortElement(byte[] in)
+        @Deprecated
+        /* private */ boolean isShortElement_OLD(byte[] in)
         {
-                if (isBigEndian && in[1] != 0 )
+                if (byteOrder == ByteOrder.BIG_ENDIAN && in[1] != 0 )
                         return true;
                 else if ( in[2] != 0 )
+                        return true;
+                
+                return false;
+        }
+        
+        /**
+         * Quote MathWorks: you can tell if you are processing a small data element by
+         * comparing the value of the first 2 bytes of the tag with the value zero (0).
+         * If these 2 bytes are not zero, the tag uses the small data element format.
+         * @param in  the tag bytes of a data element
+         * @return    treu, if the tag is in small data element format, false otherwise
+         */
+        private boolean isSmallElement(byte[] in)
+        {
+                if (byteOrder == ByteOrder.BIG_ENDIAN)
+                {
+                        if ( (in[0] != 0 || in[1] != 0) )
+                                return true;
+                }
+                else if ( (in[2] != 0 || in[3] != 0) )
                         return true;
                 
                 return false;
