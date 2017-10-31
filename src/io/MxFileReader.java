@@ -237,12 +237,12 @@ public class MxFileReader implements Closeable
                         
                         MatElementInfo obj = new MatElementInfo();
                         
-                        obj.complex     = flagField.getComplexFlag();
-                        obj.global      = flagField.getGlobalFlag();
-                        obj.logical     = flagField.getLogicalFlag();
-                        obj.classType   = flagField.getClassType();
-                        obj.dimensions  = dimField.getDimensions();
-                        obj.name        = nameField.getName();
+                        obj.setComplex   ( flagField.getComplexFlag() );
+                        obj.setGlobal    ( flagField.getGlobalFlag()  );
+                        obj.setLogical   ( flagField.getLogicalFlag() );
+                        obj.setClassID   ( flagField.getClassType()   );
+                        obj.setDimensions(  dimField.getDimensions()  );
+                        obj.setName      ( nameField.getName()        );
                         obj.position    = (int)curPos;
                         // obj could also include tag information
                         
@@ -311,14 +311,14 @@ public class MxFileReader implements Closeable
                 
                 MxDataObject dataObject = new MxDataObject();
                 
-                dataObject.complex     = flagField.getComplexFlag();
-                dataObject.global      = flagField.getGlobalFlag();
-                dataObject.logical     = flagField.getLogicalFlag();
-                dataObject.classType   = flagField.getClassType();
-                dataObject.dimensions  = dimField.getDimensions();
-                dataObject.name        = nameField.getName();
+                dataObject.setComplex   ( flagField.getComplexFlag() );
+                dataObject.setGlobal    ( flagField.getGlobalFlag()  );
+                dataObject.setLogical   ( flagField.getLogicalFlag() );
+                dataObject.setClassID   ( flagField.getClassType()   );
+                dataObject.setDimensions(  dimField.getDimensions()  );
+                dataObject.setName(       nameField.getName()        );
                 
-                switch (dataObject.classType)
+                switch (dataObject.getClassID())
                 {
                         case mxDOUBLE_CLASS:
                         {
@@ -326,17 +326,17 @@ public class MxFileReader implements Closeable
                                 
                                 NumericPartSubelement real_part = new NumericPartSubelement().read(mi);
                                 
-                                numDataObject.real_data_type = real_part.getDataType();
-                                numDataObject.real_part      = real_part.getData();
+                                numDataObject.setRealDataStorageType( real_part.getDataType() );
+                                numDataObject.setRealDataStorage( real_part.getData() );
                                 
-                                if ( numDataObject.complex == true )
+                                if ( numDataObject.isComplex() )
                                 {
                                         NumericPartSubelement imag_part = new NumericPartSubelement().read(mi);
                                         
-                                        numDataObject.imag_data_type = imag_part.getDataType();
-                                        numDataObject.imag_part      = imag_part.getData();
+                                        numDataObject.setImagDataStorageType( imag_part.getDataType() );
+                                        numDataObject.setImagDataStorage( imag_part.getData() );
                                         
-                                        if ( numDataObject.real_part.length() != numDataObject.imag_part.length() )
+                                        if ( numDataObject.getRealDataStorage().length() != numDataObject.getImagDataStorage().length() )
                                                 return null; // TODO: Better to throw an Exception ???
                                 }
                                 
@@ -355,7 +355,7 @@ public class MxFileReader implements Closeable
                                         return null;
                                 }
                                 
-                                if ( numDataObject.complex == true )
+                                if ( numDataObject.isComplex() )
                                 {
                                         try {
                                                 data[1] = numDataObject.getImagDoubleMtx();
@@ -407,8 +407,8 @@ public class MxFileReader implements Closeable
                                 
                                 NumericPartSubelement real_part = new NumericPartSubelement().read(mi);
                                 
-                                numDataObject.real_data_type = real_part.getDataType();
-                                numDataObject.real_part      = real_part.getData();
+                                numDataObject.setRealDataStorageType( real_part.getDataType() );
+                                numDataObject.setRealDataStorage( real_part.getData() );
                                 
                                 return numDataObject;
                         }
@@ -416,7 +416,7 @@ public class MxFileReader implements Closeable
                         {
                                 MxCharacterDataObject charDataObject = new MxCharacterDataObject(dataObject);
                                 
-                                charDataObject.data_string = new CharacterPartSubelement().read(mi).getString();
+                                charDataObject.setString( new CharacterPartSubelement().read(mi).getString() );
                                 
                                 return charDataObject;
                         }
@@ -424,14 +424,16 @@ public class MxFileReader implements Closeable
                         {
                                 MxCellDataObject cellDataObject = new MxCellDataObject(dataObject);
                                 
-                                int nElements = 1;
-                                
-                                for ( int i = 0; i < cellDataObject.dimensions.length; i++ )
-                                {
-                                        nElements *= cellDataObject.dimensions[i];
-                                }
-                                
-                                cellDataObject.data_vec = evalCellArrayData(in,nElements);
+//                                int nElements = 1;
+//                                
+//                                int[] dimensions = cellDataObject.getDimensions();
+//                                
+//                                for ( int i = 0; i < dimensions.length; i++ )
+//                                {
+//                                        nElements *= dimensions[i];
+//                                }
+//                                
+                                cellDataObject.setCells( evalCellArrayData(in,cellDataObject.getNumOfElements()) );
                                 
                                 return cellDataObject;
                         }
@@ -473,16 +475,16 @@ public class MxFileReader implements Closeable
                         {
                                 MxSparseDataObject sparseDataObject = new MxSparseDataObject(dataObject);
                                 
-                                sparseDataObject.nzmax = flagField.getNzMax();
+                                sparseDataObject.setNzMax( flagField.getNzMax() );
                                 
-                                SparseRaw sr = evalSparseArrayData(mi,sparseDataObject.complex);
+                                SparseRaw sr = evalSparseArrayData(mi,sparseDataObject.isComplex());
                                 
-                                sparseDataObject.real_data_type = sr.real_data_type;
-                                sparseDataObject.imag_data_type = sr.imag_data_type;
-                                sparseDataObject.real_part      = sr.real_part;
-                                sparseDataObject.imag_part      = sr.imag_part;
-                                sparseDataObject.ir             = sr.ir;
-                                sparseDataObject.jc             = sr.jc;
+                                sparseDataObject.setRealDataStorageType( sr.real_data_type );
+                                sparseDataObject.setImagDataStorageType( sr.imag_data_type );
+                                sparseDataObject.setRealDataStorage( sr.real_part );
+                                sparseDataObject.setImagDataStorage( sr.imag_part );
+                                sparseDataObject.setRowIndeices  ( sr.ir );
+                                sparseDataObject.setColumnIndices( sr.jc );
                                 
                                 return sparseDataObject;
                         }
@@ -586,7 +588,7 @@ public class MxFileReader implements Closeable
                 for ( int i = 0; i < nElements; i++ )
                 {
                         elements[i] = evalArray(in);
-                        elements[i].name = names[i]; // Substitute field name
+                        elements[i].setName(names[i]); // Substitute field name
                 }
                 
                 return elements;

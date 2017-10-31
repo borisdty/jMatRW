@@ -77,16 +77,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxDOUBLE_CLASS;
-                ref.dimensions = new int[]{1,1};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miUINT8;
-                ref.imag_data_type = null;
-                ref.real_part = new ByteArray(new byte[]{1});
-                ref.imag_part = null;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxDOUBLE_CLASS);
+                ref.setDimensions( new int[]{1,1} );
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miUINT8);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new ByteArray(new byte[]{1}) );
+                ref.setImagDataStorage(null);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -127,16 +127,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxDOUBLE_CLASS;
-                ref.dimensions = new int[]{1,2};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miUINT8;
-                ref.imag_data_type = null;
-                ref.real_part = new ByteArray(new byte[]{1,2});
-                ref.imag_part = null;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxDOUBLE_CLASS);
+                ref.setDimensions(new int[]{1,2});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miUINT8);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new ByteArray(new byte[]{1,2}) );
+                ref.setImagDataStorage(null);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -177,16 +177,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxDOUBLE_CLASS;
-                ref.dimensions = new int[]{1,3};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miUINT8;
-                ref.imag_data_type = null;
-                ref.real_part = new ByteArray(new byte[]{1,2,3});
-                ref.imag_part = null;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxDOUBLE_CLASS);
+                ref.setDimensions(new int[]{1,3});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miUINT8);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new ByteArray(new byte[]{1,2,3}) );
+                ref.setImagDataStorage(null);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -227,16 +227,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxDOUBLE_CLASS;
-                ref.dimensions = new int[]{1,4};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miUINT8;
-                ref.imag_data_type = null;
-                ref.real_part = new ByteArray(new byte[]{1,2,3,4});
-                ref.imag_part = null;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxDOUBLE_CLASS);
+                ref.setDimensions(new int[]{1,4});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miUINT8);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new ByteArray(new byte[]{1,2,3,4}) );
+                ref.setImagDataStorage(null);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -277,16 +277,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxDOUBLE_CLASS;
-                ref.dimensions = new int[]{1,1};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miDOUBLE;
-                ref.imag_data_type = null;
-                ref.real_part = new DoubleArray(new double[]{1.1});
-                ref.imag_part = null;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxDOUBLE_CLASS);
+                ref.setDimensions(new int[]{1,1});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miDOUBLE);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new DoubleArray(new double[]{1.1}) );
+                ref.setImagDataStorage(null);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -327,16 +327,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxDOUBLE_CLASS;
-                ref.dimensions = new int[]{1,2};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miDOUBLE;
-                ref.imag_data_type = null;
-                ref.real_part = new DoubleArray(new double[]{1.1,2.2});
-                ref.imag_part = null;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxDOUBLE_CLASS);
+                ref.setDimensions(new int[]{1,2});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miDOUBLE);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new DoubleArray(new double[]{1.1,2.2}) );
+                ref.setImagDataStorage(null);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -377,16 +377,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxINT32_CLASS;
-                ref.dimensions = new int[]{1,1};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miINT32;
-                ref.imag_data_type = null;
-                ref.real_part = new IntArray(new int[]{257});
-                ref.imag_part = null;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxINT32_CLASS);
+                ref.setDimensions(new int[]{1,1});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miINT32);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new IntArray(new int[]{257}) );
+                ref.setImagDataStorage(null);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -427,16 +427,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxDOUBLE_CLASS;
-                ref.dimensions = new int[]{2,1};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miUINT8;
-                ref.imag_data_type = null;
-                ref.real_part = new ByteArray(new byte[]{1,2});
-                ref.imag_part = null;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxDOUBLE_CLASS);
+                ref.setDimensions(new int[]{2,1});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miUINT8);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new ByteArray(new byte[]{1,2}) );
+                ref.setImagDataStorage(null);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -477,16 +477,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxDOUBLE_CLASS;
-                ref.dimensions = new int[]{2,2};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miUINT8;
-                ref.imag_data_type = null;
-                ref.real_part = new ByteArray(new byte[]{1,3,2,4});
-                ref.imag_part = null;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxDOUBLE_CLASS);
+                ref.setDimensions(new int[]{2,2});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miUINT8);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new ByteArray(new byte[]{1,3,2,4}) );
+                ref.setImagDataStorage(null);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -527,16 +527,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxDOUBLE_CLASS;
-                ref.dimensions = new int[]{2,3};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miUINT8;
-                ref.imag_data_type = null;
-                ref.real_part = new ByteArray(new byte[]{1,4,2,5,3,6});
-                ref.imag_part = null;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxDOUBLE_CLASS);
+                ref.setDimensions(new int[]{2,3});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miUINT8);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new ByteArray(new byte[]{1,4,2,5,3,6}) );
+                ref.setImagDataStorage(null);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -577,16 +577,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxDOUBLE_CLASS;
-                ref.dimensions = new int[]{2,4};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miUINT8;
-                ref.imag_data_type = null;
-                ref.real_part = new ByteArray(new byte[]{1,5,2,6,3,7,4,8});
-                ref.imag_part = null;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxDOUBLE_CLASS);
+                ref.setDimensions(new int[]{2,4});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miUINT8);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new ByteArray(new byte[]{1,5,2,6,3,7,4,8}) );
+                ref.setImagDataStorage(null);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -627,16 +627,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxDOUBLE_CLASS;
-                ref.dimensions = new int[]{2,2};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miDOUBLE;
-                ref.imag_data_type = null;
-                ref.real_part = new DoubleArray(new double[]{1.1,3,2,4});
-                ref.imag_part = null;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxDOUBLE_CLASS);
+                ref.setDimensions(new int[]{2,2});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miDOUBLE);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new DoubleArray(new double[]{1.1,3,2,4}) );
+                ref.setImagDataStorage(null);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -678,16 +678,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = true;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxDOUBLE_CLASS;
-                ref.dimensions = new int[]{2,2};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miDOUBLE;
-                ref.imag_data_type = DataType.miDOUBLE;
-                ref.real_part = new DoubleArray(new double[]{1.1,3,2,4});
-                ref.imag_part = new DoubleArray(new double[]{0,0,2.2,0});
+                ref.setComplex(true);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxDOUBLE_CLASS);
+                ref.setDimensions(new int[]{2,2});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miDOUBLE);
+                ref.setImagDataStorageType(DataType.miDOUBLE);
+                ref.setRealDataStorage( new DoubleArray(new double[]{1.1,3,2,4}) );
+                ref.setImagDataStorage( new DoubleArray(new double[]{0,0,2.2,0}) );
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -728,13 +728,13 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxCharacterDataObject ref = new MxCharacterDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxCHAR_CLASS;
-                ref.dimensions = new int[]{1,1};
-                ref.name       = varname;
-                ref.data_string = "a";
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxCHAR_CLASS);
+                ref.setDimensions(new int[]{1,1});
+                ref.setName(varname);
+                ref.setString("a");
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -775,13 +775,13 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxCharacterDataObject ref = new MxCharacterDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxCHAR_CLASS;
-                ref.dimensions = new int[]{1,2};
-                ref.name       = varname;
-                ref.data_string = "ab";
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxCHAR_CLASS);
+                ref.setDimensions(new int[]{1,2});
+                ref.setName(varname);
+                ref.setString("ab");
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -822,13 +822,13 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxCharacterDataObject ref = new MxCharacterDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxCHAR_CLASS;
-                ref.dimensions = new int[]{1,4};
-                ref.name       = varname;
-                ref.data_string = "abcd";
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxCHAR_CLASS);
+                ref.setDimensions(new int[]{1,4});
+                ref.setName(varname);
+                ref.setString("abcd");
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -869,13 +869,13 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxCharacterDataObject ref = new MxCharacterDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxCHAR_CLASS;
-                ref.dimensions = new int[]{1,5};
-                ref.name       = varname;
-                ref.data_string = "abcde";
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxCHAR_CLASS);
+                ref.setDimensions(new int[]{1,5});
+                ref.setName(varname);
+                ref.setString("abcde");
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -917,53 +917,53 @@ public class MxArrayIOTest
                 numArrayVec1.setData(dataVec1);
                 
                 MxNumericDataObject refVec1 = new MxNumericDataObject();
-                refVec1.complex    = false;
-                refVec1.global     = false;
-                refVec1.logical    = false;
-                refVec1.classType  = MxClassID.mxDOUBLE_CLASS;
-                refVec1.dimensions = new int[]{1,1};
-                refVec1.name       = ""; // MATLAB does not store it... "vec1";
-                refVec1.real_data_type = DataType.miUINT8;
-                refVec1.imag_data_type = null;
-                refVec1.real_part = new ByteArray(new byte[]{1});
-                refVec1.imag_part = null;
+                refVec1.setComplex(false);
+                refVec1.setGlobal(false);
+                refVec1.setLogical(false);
+                refVec1.setClassID(MxClassID.mxDOUBLE_CLASS);
+                refVec1.setDimensions(new int[]{1,1});
+                refVec1.setName(""); // MATLAB does not store it... "vec1";
+                refVec1.setRealDataStorageType(DataType.miUINT8);
+                refVec1.setImagDataStorageType(null);
+                refVec1.setRealDataStorage( new ByteArray(new byte[]{1}) );
+                refVec1.setImagDataStorage(null);
                 
                 MxEmptyDataObject refEmpty = new MxEmptyDataObject();
-                refEmpty.complex    = false;
-                refEmpty.global     = false;
-                refEmpty.logical    = false;
-                refEmpty.classType  = MxClassID.mxDOUBLE_CLASS;
-                refEmpty.dimensions = new int[]{0,0};
-                refEmpty.name       = "";
+                refEmpty.setComplex(false);
+                refEmpty.setGlobal(false);
+                refEmpty.setLogical(false);
+                refEmpty.setClassID(MxClassID.mxDOUBLE_CLASS);
+                refEmpty.setDimensions(new int[]{0,0});
+                refEmpty.setName("");
                 
                 double[][] dataMat2 = {{1,2},{3,4}};
                 MxNumericArray numArrayMat2 = new MxNumericArray("mat2");
                 numArrayMat2.setData(dataMat2);
                 
                 MxNumericDataObject refMat2 = new MxNumericDataObject();
-                refMat2.complex    = false;
-                refMat2.global     = false;
-                refMat2.logical    = false;
-                refMat2.classType  = MxClassID.mxDOUBLE_CLASS;
-                refMat2.dimensions = new int[]{2,2};
-                refMat2.name       = ""; // MATLAB does not store it... "mat2";
-                refMat2.real_data_type = DataType.miUINT8;
-                refMat2.imag_data_type = null;
-                refMat2.real_part = new ByteArray(new byte[]{1,3,2,4});
-                refMat2.imag_part = null;
+                refMat2.setComplex(false);
+                refMat2.setGlobal(false);
+                refMat2.setLogical(false);
+                refMat2.setClassID(MxClassID.mxDOUBLE_CLASS);
+                refMat2.setDimensions(new int[]{2,2});
+                refMat2.setName(""); // MATLAB does not store it... "mat2";
+                refMat2.setRealDataStorageType(DataType.miUINT8);
+                refMat2.setImagDataStorageType(null);
+                refMat2.setRealDataStorage( new ByteArray(new byte[]{1,3,2,4}) );
+                refMat2.setImagDataStorage(null);
                 
                 String dataStr4 = "abcde";
                 MxCharacterArray charArrayStr4 = new MxCharacterArray("str4");
                 charArrayStr4.setData(dataStr4);
                 
                 MxCharacterDataObject refStr4 = new MxCharacterDataObject();
-                refStr4.complex    = false;
-                refStr4.global     = false;
-                refStr4.logical    = false;
-                refStr4.classType  = MxClassID.mxCHAR_CLASS;
-                refStr4.dimensions = new int[]{1,5};
-                refStr4.name       = ""; // MATLAB does not store it... "str4";
-                refStr4.data_string = "abcde";
+                refStr4.setComplex(false);
+                refStr4.setGlobal(false);
+                refStr4.setLogical(false);
+                refStr4.setClassID(MxClassID.mxCHAR_CLASS);
+                refStr4.setDimensions(new int[]{1,5});
+                refStr4.setName(""); // MATLAB does not store it... "str4";
+                refStr4.setString("abcde");
                 
                 MxCellArray cellArray = new MxCellArray(varname);
                 cellArray.addData(numArrayVec1, 0,0);
@@ -975,13 +975,13 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxCellDataObject refCell1 = new MxCellDataObject();
-                refCell1.complex    = false;
-                refCell1.global     = false;
-                refCell1.logical    = false;
-                refCell1.classType  = MxClassID.mxCELL_CLASS;
-                refCell1.dimensions = new int[]{2,2};
-                refCell1.name       = varname;
-                refCell1.data_vec   = new MxDataObject[] {refVec1,refEmpty,refMat2,refStr4};
+                refCell1.setComplex(false);
+                refCell1.setGlobal(false);
+                refCell1.setLogical(false);
+                refCell1.setClassID(MxClassID.mxCELL_CLASS);
+                refCell1.setDimensions(new int[]{2,2});
+                refCell1.setName(varname);
+                refCell1.setCells( new MxDataObject[] {refVec1,refEmpty,refMat2,refStr4} );
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -1023,41 +1023,41 @@ public class MxArrayIOTest
                 numArray1.setData(vec);
                 
                 MxNumericDataObject refVec1 = new MxNumericDataObject();
-                refVec1.complex    = false;
-                refVec1.global     = false;
-                refVec1.logical    = false;
-                refVec1.classType  = MxClassID.mxDOUBLE_CLASS;
-                refVec1.dimensions = new int[]{1,4};
-                refVec1.name       = ""; // MATLAB does not store it... "vec1";
-                refVec1.real_data_type = DataType.miUINT8;
-                refVec1.imag_data_type = null;
-                refVec1.real_part = new ByteArray(new byte[]{1,2,3,4});
-                refVec1.imag_part = null;
+                refVec1.setComplex(false);
+                refVec1.setGlobal(false);
+                refVec1.setLogical(false);
+                refVec1.setClassID(MxClassID.mxDOUBLE_CLASS);
+                refVec1.setDimensions(new int[]{1,4});
+                refVec1.setName(""); // MATLAB does not store it... "vec1";
+                refVec1.setRealDataStorageType(DataType.miUINT8);
+                refVec1.setImagDataStorageType(null);
+                refVec1.setRealDataStorage( new ByteArray(new byte[]{1,2,3,4}) );
+                refVec1.setImagDataStorage(null);
                 
                 double[][] mat = {{1,2,3,4},{5,6,7,8}};
                 MxNumericArray numArray2 = new MxNumericArray("Mat_a");
                 numArray2.setData(mat);
                 
                 MxNumericDataObject refMat2 = new MxNumericDataObject();
-                refMat2.complex    = false;
-                refMat2.global     = false;
-                refMat2.logical    = false;
-                refMat2.classType  = MxClassID.mxDOUBLE_CLASS;
-                refMat2.dimensions = new int[]{2,4};
-                refMat2.name       = ""; // MATLAB does not store it... "mat2";
-                refMat2.real_data_type = DataType.miUINT8;
-                refMat2.imag_data_type = null;
-                refMat2.real_part = new ByteArray(new byte[]{1,5,2,6,3,7,4,8});
-                refMat2.imag_part = null;
+                refMat2.setComplex(false);
+                refMat2.setGlobal(false);
+                refMat2.setLogical(false);
+                refMat2.setClassID(MxClassID.mxDOUBLE_CLASS);
+                refMat2.setDimensions(new int[]{2,4});
+                refMat2.setName(""); // MATLAB does not store it... "mat2";
+                refMat2.setRealDataStorageType(DataType.miUINT8);
+                refMat2.setImagDataStorageType(null);
+                refMat2.setRealDataStorage( new ByteArray(new byte[]{1,5,2,6,3,7,4,8}) );
+                refMat2.setImagDataStorage(null);
                 
                 //EmptyNumericArray emptyNumArray = new EmptyNumericArray();
                 MxEmptyDataObject refEmpty = new MxEmptyDataObject();
-                refEmpty.complex    = false;
-                refEmpty.global     = false;
-                refEmpty.logical    = false;
-                refEmpty.classType  = MxClassID.mxDOUBLE_CLASS;
-                refEmpty.dimensions = new int[]{0,0};
-                refEmpty.name       = "";
+                refEmpty.setComplex(false);
+                refEmpty.setGlobal(false);
+                refEmpty.setLogical(false);
+                refEmpty.setClassID(MxClassID.mxDOUBLE_CLASS);
+                refEmpty.setDimensions(new int[]{0,0});
+                refEmpty.setName("");
                 
                 MxNumericArray[][] cellData = {{null,numArray1},{numArray2,numArray1}};
                 
@@ -1068,13 +1068,13 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxCellDataObject refCell2 = new MxCellDataObject();
-                refCell2.complex    = false;
-                refCell2.global     = false;
-                refCell2.logical    = false;
-                refCell2.classType  = MxClassID.mxCELL_CLASS;
-                refCell2.dimensions = new int[]{2,2};
-                refCell2.name       = varname;
-                refCell2.data_vec   = new MxDataObject[] {refEmpty,refMat2,refVec1,refVec1};
+                refCell2.setComplex(false);
+                refCell2.setGlobal(false);
+                refCell2.setLogical(false);
+                refCell2.setClassID(MxClassID.mxCELL_CLASS);
+                refCell2.setDimensions(new int[]{2,2});
+                refCell2.setName(varname);
+                refCell2.setCells( new MxDataObject[] {refEmpty,refMat2,refVec1,refVec1} );
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -1114,47 +1114,47 @@ public class MxArrayIOTest
                 numArrayMat4.setData(dataMat4);
                 
                 MxNumericDataObject refMat4 = new MxNumericDataObject();
-                refMat4.complex    = false;
-                refMat4.global     = false;
-                refMat4.logical    = false;
-                refMat4.classType  = MxClassID.mxDOUBLE_CLASS;
-                refMat4.dimensions = new int[]{2,4};
-                refMat4.name       = "mat";
-                refMat4.real_data_type = DataType.miUINT8;
-                refMat4.imag_data_type = null;
-                refMat4.real_part = new ByteArray(new byte[]{1,5,2,6,3,7,4,8});
-                refMat4.imag_part = null;
+                refMat4.setComplex(false);
+                refMat4.setGlobal(false);
+                refMat4.setLogical(false);
+                refMat4.setClassID(MxClassID.mxDOUBLE_CLASS);
+                refMat4.setDimensions(new int[]{2,4});
+                refMat4.setName("mat");
+                refMat4.setRealDataStorageType(DataType.miUINT8);
+                refMat4.setImagDataStorageType(null);
+                refMat4.setRealDataStorage( new ByteArray(new byte[]{1,5,2,6,3,7,4,8}) );
+                refMat4.setImagDataStorage(null);
                 
                 double[] dataVec4 = {1,2,3,4};
                 MxNumericArray numArrayVec4 = new MxNumericArray("vec4");
                 numArrayVec4.setData(dataVec4);
                 
                 MxNumericDataObject refVec4 = new MxNumericDataObject();
-                refVec4.complex    = false;
-                refVec4.global     = false;
-                refVec4.logical    = false;
-                refVec4.classType  = MxClassID.mxDOUBLE_CLASS;
-                refVec4.dimensions = new int[]{1,4};
-                refVec4.name       = "vec";
-                refVec4.real_data_type = DataType.miUINT8;
-                refVec4.imag_data_type = null;
-                refVec4.real_part = new ByteArray(new byte[]{1,2,3,4});
-                refVec4.imag_part = null;
+                refVec4.setComplex(false);
+                refVec4.setGlobal(false);
+                refVec4.setLogical(false);
+                refVec4.setClassID(MxClassID.mxDOUBLE_CLASS);
+                refVec4.setDimensions(new int[]{1,4});
+                refVec4.setName("vec");
+                refVec4.setRealDataStorageType(DataType.miUINT8);
+                refVec4.setImagDataStorageType(null);
+                refVec4.setRealDataStorage( new ByteArray(new byte[]{1,2,3,4}) );
+                refVec4.setImagDataStorage(null);
                 
                 MxStructArray structArray = new MxStructArray(varname);
-                structArray.addData(refVec4.name,numArrayVec4);
-                structArray.addData(refMat4.name,numArrayMat4);
+                structArray.addData(refVec4.getName(),numArrayVec4);
+                structArray.addData(refMat4.getName(),numArrayMat4);
                 
                 fwriter.write(structArray);
                 fwriter.close();
                 
                 MxStructDataObject refStruct1 = new MxStructDataObject();
-                refStruct1.complex    = false;
-                refStruct1.global     = false;
-                refStruct1.logical    = false;
-                refStruct1.classType  = MxClassID.mxSTRUCT_CLASS;
-                refStruct1.dimensions = new int[]{1,1};
-                refStruct1.name       = varname;
+                refStruct1.setComplex(false);
+                refStruct1.setGlobal(false);
+                refStruct1.setLogical(false);
+                refStruct1.setClassID(MxClassID.mxSTRUCT_CLASS);
+                refStruct1.setDimensions(new int[]{1,1});
+                refStruct1.setName(varname);
                 refStruct1.data_vec   = new MxDataObject[] {refVec4,refMat4};
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
@@ -1194,16 +1194,16 @@ public class MxArrayIOTest
                 numArrayNan1.setData(dataNan1);
                 
                 MxNumericDataObject refNan1 = new MxNumericDataObject();
-                refNan1.complex    = false;
-                refNan1.global     = false;
-                refNan1.logical    = false;
-                refNan1.classType  = MxClassID.mxDOUBLE_CLASS;
-                refNan1.dimensions = new int[]{1,2};
-                refNan1.name       = varname;
-                refNan1.real_data_type = DataType.miDOUBLE;
-                refNan1.imag_data_type = null;
-                refNan1.real_part = new DoubleArray(new double[]{Double.NaN,1});
-                refNan1.imag_part = null;
+                refNan1.setComplex(false);
+                refNan1.setGlobal(false);
+                refNan1.setLogical(false);
+                refNan1.setClassID(MxClassID.mxDOUBLE_CLASS);
+                refNan1.setDimensions(new int[]{1,2});
+                refNan1.setName(varname);
+                refNan1.setRealDataStorageType(DataType.miDOUBLE);
+                refNan1.setImagDataStorageType(null);
+                refNan1.setRealDataStorage( new DoubleArray(new double[]{Double.NaN,1}) );
+                refNan1.setImagDataStorage(null);
                 
                 fwriter.write(numArrayNan1);
                 fwriter.close();
@@ -1228,7 +1228,7 @@ public class MxArrayIOTest
                 assertEquals(s2, refNan1, m2);
                 assertEquals(s3, m1, m2);
                 
-                DoubleArray da = (DoubleArray)((MxNumericDataObject)m1).real_part;
+                DoubleArray da = (DoubleArray)((MxNumericDataObject)m1).getRealDataStorage();
                 double[] da2 = da.getData();
                 assertEquals("Test if value read from file equals NaN",
                                 Double.compare(Double.NaN, da2[0] ), 0 );
@@ -1265,19 +1265,19 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxSparseDataObject ref = new MxSparseDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxSPARSE_CLASS;
-                ref.dimensions = new int[]{5,4};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miDOUBLE;
-                ref.imag_data_type = null;
-                ref.real_part      = new DoubleArray(data);
-                ref.imag_part      = null;
-                ref.ir             = ir;
-                ref.jc             = jc;
-                ref.nzmax          = 5;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxSPARSE_CLASS);
+                ref.setDimensions(new int[]{5,4});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miDOUBLE);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new DoubleArray(data) );
+                ref.setImagDataStorage(null);
+                ref.setRowIndeices  ( ir );
+                ref.setColumnIndices( jc );
+                ref.setNzMax(5);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -1341,19 +1341,19 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxSparseDataObject ref = new MxSparseDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxSPARSE_CLASS;
-                ref.dimensions = new int[]{6,5};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miDOUBLE;
-                ref.imag_data_type = null;
-                ref.real_part      = new DoubleArray(new double[]{0.1, 1.1, 2.2, 3.3, 4.4});
-                ref.imag_part      = null;
-                ref.ir             = new int[] {4, 3, 2, 1, 3};
-                ref.jc             = new int[] {0, 1, 2, 3, 3};
-                ref.nzmax          = 5;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxSPARSE_CLASS);
+                ref.setDimensions(new int[]{6,5});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miDOUBLE);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new DoubleArray(new double[]{0.1, 1.1, 2.2, 3.3, 4.4}) );
+                ref.setImagDataStorage(null);
+                ref.setRowIndeices  ( new int[] {4, 3, 2, 1, 3} );
+                ref.setColumnIndices( new int[] {0, 1, 2, 3, 3} );
+                ref.setNzMax(5);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -1403,32 +1403,32 @@ public class MxArrayIOTest
                 numArrayVec.setData(vec);
                 
                 MxNumericDataObject refvec = new MxNumericDataObject();
-                refvec.complex    = false;
-                refvec.global     = false;
-                refvec.logical    = false;
-                refvec.classType  = MxClassID.mxDOUBLE_CLASS;
-                refvec.dimensions = new int[]{1,2};
-                refvec.name       = ""; // MATLAB does not store it... "VecX_a";
-                refvec.real_data_type = DataType.miDOUBLE;
-                refvec.imag_data_type = null;
-                refvec.real_part = new DoubleArray(new double[]{1.1,2.2});
-                refvec.imag_part = null;
+                refvec.setComplex(false);
+                refvec.setGlobal(false);
+                refvec.setLogical(false);
+                refvec.setClassID(MxClassID.mxDOUBLE_CLASS);
+                refvec.setDimensions(new int[]{1,2});
+                refvec.setName(""); // MATLAB does not store it... "VecX_a";
+                refvec.setRealDataStorageType(DataType.miDOUBLE);
+                refvec.setImagDataStorageType(null);
+                refvec.setRealDataStorage( new DoubleArray(new double[]{1.1,2.2}) );
+                refvec.setImagDataStorage(null);
                 
                 double[][] mat = {{1},{2}};
                 MxNumericArray numArrayMat = new MxNumericArray("aaMatX_a");
                 numArrayMat.setData(mat);
                 
                 MxNumericDataObject refmat = new MxNumericDataObject();
-                refmat.complex    = false;
-                refmat.global     = false;
-                refmat.logical    = false;
-                refmat.classType  = MxClassID.mxDOUBLE_CLASS;
-                refmat.dimensions = new int[]{2,1};
-                refmat.name       = ""; // MATLAB does not store it... "MatX_a";
-                refmat.real_data_type = DataType.miUINT8;
-                refmat.imag_data_type = null;
-                refmat.real_part = new ByteArray(new byte[]{1,2});
-                refmat.imag_part = null;
+                refmat.setComplex(false);
+                refmat.setGlobal(false);
+                refmat.setLogical(false);
+                refmat.setClassID(MxClassID.mxDOUBLE_CLASS);
+                refmat.setDimensions(new int[]{2,1});
+                refmat.setName(""); // MATLAB does not store it... "MatX_a";
+                refmat.setRealDataStorageType(DataType.miUINT8);
+                refmat.setImagDataStorageType(null);
+                refmat.setRealDataStorage( new ByteArray(new byte[]{1,2}) );
+                refmat.setImagDataStorage(null);
                 
                 MxCellArray cellArray = new MxCellArray("CellX_a");
                 cellArray.addData(numArrayVec,0,0);
@@ -1443,21 +1443,21 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxCellDataObject refCell1 = new MxCellDataObject();
-                refCell1.complex    = false;
-                refCell1.global     = false;
-                refCell1.logical    = false;
-                refCell1.classType  = MxClassID.mxCELL_CLASS;
-                refCell1.dimensions = new int[]{1,2};
-                refCell1.name       = "CellX_a";
-                refCell1.data_vec   = new MxDataObject[] {refvec,refmat};
+                refCell1.setComplex(false);
+                refCell1.setGlobal(false);
+                refCell1.setLogical(false);
+                refCell1.setClassID(MxClassID.mxCELL_CLASS);
+                refCell1.setDimensions(new int[]{1,2});
+                refCell1.setName("CellX_a");
+                refCell1.setCells( new MxDataObject[] {refvec,refmat} );
                 
                 MxStructDataObject refStruct1 = new MxStructDataObject();
-                refStruct1.complex    = false;
-                refStruct1.global     = false;
-                refStruct1.logical    = false;
-                refStruct1.classType  = MxClassID.mxSTRUCT_CLASS;
-                refStruct1.dimensions = new int[]{1,1};
-                refStruct1.name       = "StructX_a";
+                refStruct1.setComplex(false);
+                refStruct1.setGlobal(false);
+                refStruct1.setLogical(false);
+                refStruct1.setClassID(MxClassID.mxSTRUCT_CLASS);
+                refStruct1.setDimensions(new int[]{1,1});
+                refStruct1.setName("StructX_a");
                 refStruct1.data_vec   = new MxDataObject[] {refvec,refmat};
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
@@ -1486,8 +1486,8 @@ public class MxArrayIOTest
                 assertTrue( CompareBinary.compare(readName, writeName, 128) );
                 
                 // For structures MATLAB re-inserts field names
-                refvec.name = "VecX_a";
-                refmat.name = "MatX_a";
+                refvec.setName("VecX_a");
+                refmat.setName("MatX_a");
                 
                 s1 = "Test if value read from j-file equals reference";
                 s2 = "Test if value read from m-file equals reference";
@@ -1517,16 +1517,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxDOUBLE_CLASS;
-                ref.dimensions = new int[]{1,1};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miUINT8;
-                ref.imag_data_type = null;
-                ref.real_part = new ByteArray(new byte[]{1});
-                ref.imag_part = null;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxDOUBLE_CLASS);
+                ref.setDimensions(new int[]{1,1});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miUINT8);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new ByteArray(new byte[]{1}) );
+                ref.setImagDataStorage(null);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -1567,16 +1567,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = false;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxDOUBLE_CLASS;
-                ref.dimensions = new int[]{1,2};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miUINT8;
-                ref.imag_data_type = null;
-                ref.real_part = new ByteArray(new byte[]{1,2});
-                ref.imag_part = null;
+                ref.setComplex(false);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxDOUBLE_CLASS);
+                ref.setDimensions(new int[]{1,2});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miUINT8);
+                ref.setImagDataStorageType(null);
+                ref.setRealDataStorage( new ByteArray(new byte[]{1,2}) );
+                ref.setImagDataStorage(null);
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -1618,16 +1618,16 @@ public class MxArrayIOTest
                 fwriter.close();
                 
                 MxNumericDataObject ref = new MxNumericDataObject();
-                ref.complex    = true;
-                ref.global     = false;
-                ref.logical    = false;
-                ref.classType  = MxClassID.mxDOUBLE_CLASS;
-                ref.dimensions = new int[]{2,2};
-                ref.name       = varname;
-                ref.real_data_type = DataType.miDOUBLE;
-                ref.imag_data_type = DataType.miDOUBLE;
-                ref.real_part = new DoubleArray(new double[]{1.1,3,2,4});
-                ref.imag_part = new DoubleArray(new double[]{0,0,2.2,0});
+                ref.setComplex(true);
+                ref.setGlobal(false);
+                ref.setLogical(false);
+                ref.setClassID(MxClassID.mxDOUBLE_CLASS);
+                ref.setDimensions(new int[]{2,2});
+                ref.setName(varname);
+                ref.setRealDataStorageType(DataType.miDOUBLE);
+                ref.setImagDataStorageType(DataType.miDOUBLE);
+                ref.setRealDataStorage( new DoubleArray(new double[]{1.1,3,2,4}) );
+                ref.setImagDataStorage( new DoubleArray(new double[]{0,0,2.2,0}) );
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
