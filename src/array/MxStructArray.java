@@ -225,6 +225,9 @@ public class MxStructArray extends AbstractArrayElement
         
         private class FlexMatrix implements Iterable<Entry>
         {
+                /*
+                 * Could FlexMatrix<Entry> be a Hashtable ???
+                 */
                 ArrayList<Entry> list;
                 
                 FlexMatrix()
