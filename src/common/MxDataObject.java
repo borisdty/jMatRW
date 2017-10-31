@@ -12,12 +12,14 @@ public class MxDataObject
         // TODO: List below Would need to be extended by
         // boolean sparse;
         // to read out the sparse bit flag.
-        public  boolean     complex;
-        public  boolean     global;
-        public  boolean     logical;
-        public  MxClassID   classType;
-        public  int[]       dimensions;
-        public  String      name;
+        private boolean     complex;
+        private boolean     global;
+        private boolean     logical;
+        
+        protected MxClassID   classType;
+        protected int[]       dimensions;
+        protected String      name;
+        private   int         numOfElements;
         
         // 'data' is used to return the final result in MxFileReader, in case
         // of matrixes; that is if the returned data is a MxNumericDataObject (not in
@@ -40,6 +42,7 @@ public class MxDataObject
                 dimensions = new int[]{0,0};
                 name       = "";
                 data       = null;
+                numOfElements = 0;
         }
         
         public MxDataObject( MxDataObject other )
@@ -51,6 +54,7 @@ public class MxDataObject
                 dimensions = other.dimensions;
                 name       = other.name;
                 data       = other.data;
+                numOfElements = other.numOfElements;
         }
         
         /* (non-Javadoc)
@@ -123,5 +127,74 @@ public class MxDataObject
 //                }
                 
                 return true;
+        }
+        
+        public boolean isComplex()
+        {
+                return complex;
+        }
+        
+        public boolean isGlobal()
+        {
+                return global;
+        }
+        
+        public boolean isLogical()
+        {
+                return logical;
+        }
+        
+        public MxClassID getClassID()
+        {
+                return classType;
+        }
+        
+        public int[] getDimensions()
+        {
+                return dimensions.clone();
+        }
+        
+        public String getName()
+        {
+                return name;
+        }
+        
+        public int getNumOfElements()
+        {
+                return numOfElements;
+        }
+        
+        public void setComplex(boolean complex)
+        {
+                this.complex = complex;
+        }
+        
+        public void setGlobal(boolean global)
+        {
+                this.global = global;
+        }
+        
+        public void setLogical(boolean logical)
+        {
+                this.logical = logical;
+        }
+        
+        public void setClassID(MxClassID classID)
+        {
+                this.classType = classID;
+        }
+        
+        public void setDimensions(int[] dimensions)
+        {
+                this.dimensions = dimensions.clone();
+                
+                numOfElements = 1;
+                for ( int k = 0; k < dimensions.length; k++ )
+                        numOfElements *= dimensions[k];
+        }
+        
+        public void setName(String name)
+        {
+                this.name = name;
         }
 }
