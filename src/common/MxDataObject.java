@@ -12,7 +12,6 @@ public class MxDataObject
         // TODO: List below Would need to be extended by
         // boolean sparse;
         // to read out the sparse bit flag.
-        // test
         private boolean     complex;
         private boolean     global;
         private boolean     logical;
