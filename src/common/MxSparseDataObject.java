@@ -9,10 +9,10 @@ import java.util.Arrays;
  */
 public class MxSparseDataObject extends MxNumericDataObject
 {
-        public int[] ir;
-        public int[] jc;
+        private int[] ir;
+        private int[] jc;
         
-        public int nzmax;
+        private int nzmax;
         
         public MxSparseDataObject()
         {
@@ -72,5 +72,35 @@ public class MxSparseDataObject extends MxNumericDataObject
                         return false;
                 
                 return true;
+        }
+        
+        public int getNzMax()
+        {
+                return nzmax;
+        }
+        
+        public int[] getRowIndeices()
+        {
+                return ir.clone();
+        }
+        
+        public int[] getColumnIndices()
+        {
+                return jc.clone();
+        }
+        
+        public void setNzMax(int nzmax)
+        {
+                this.nzmax = nzmax;
+        }
+        
+        public void setRowIndeices(int[] ir)
+        {
+                this.ir = ir;
+        }
+        
+        public void setColumnIndices(int[] jc)
+        {
+                this.jc = jc;
         }
 }

@@ -626,99 +626,99 @@ public class NumericPartSubelement extends AbstractDataElement
                         // miUINT8 and char-type
                         if ( type == DataType.miINT8 )
                         {
-                                byte[] out2 = new byte[nElements];
+                                byte[] arr = new byte[nElements];
                                 
                                 for ( int i = 0; i < nElements; i++ )
                                 {
-                                        out2[i] = Bytes.toByte(buf, offset, in.getByteOrder());
+                                        arr[i] = Bytes.toByte(buf, offset, in.getByteOrder());
                                         offset += atomSize;
                                 }
                                 
-                                setData(out2,DataType.miINT8);
+                                setData(arr,DataType.miINT8);
                         }
                         else if ( type == DataType.miUINT8 )
                         {
-                                byte[] out2 = new byte[nElements];
+                                byte[] arr = new byte[nElements];
                                 
                                 for ( int i = 0; i < nElements; i++ )
                                 {
-                                        out2[i] = (byte)Bytes.toUByte(buf, offset, in.getByteOrder());
+                                        arr[i] = (byte)Bytes.toUByte(buf, offset, in.getByteOrder());
                                         offset += atomSize;
                                 }
                                 
-                                setData(out2,DataType.miUINT8);
+                                setData(arr,DataType.miUINT8);
                         }
                         else if ( type == DataType.miINT16 )
                         {
-                                short[] out2 = new short[nElements];
+                                short[] arr = new short[nElements];
                                 
                                 for ( int i = 0; i < nElements; i++ )
                                 {
-                                        out2[i] = Bytes.toShort(buf, offset, in.getByteOrder());
+                                        arr[i] = Bytes.toShort(buf, offset, in.getByteOrder());
                                         offset += atomSize;
                                 }
                                 
-                                setData(out2,DataType.miINT16);
+                                setData(arr,DataType.miINT16);
                         }
                         else if ( type == DataType.miUINT16 )
                         {
-                                short[] out2 = new short[nElements];
+                                short[] arr = new short[nElements];
                                 
                                 for ( int i = 0; i < nElements; i++ )
                                 {
-                                        out2[i] = (short)Bytes.toUShort(buf, offset, in.getByteOrder());
+                                        arr[i] = (short)Bytes.toUShort(buf, offset, in.getByteOrder());
                                         offset += atomSize;
                                 }
                                 
-                                setData(out2);
+                                setData(arr,DataType.miINT16);
                         }
                         else if ( type == DataType.miINT32 )
                         {
-                                int[] out2 = new int[nElements];
+                                int[] arr = new int[nElements];
                                 
                                 for ( int i = 0; i < nElements; i++ )
                                 {
-                                        out2[i] = Bytes.toInt(buf, offset, in.getByteOrder());
+                                        arr[i] = Bytes.toInt(buf, offset, in.getByteOrder());
                                         offset += atomSize;
                                 }
                                 
-                                setData(out2,DataType.miINT32);
+                                setData(arr,DataType.miINT32);
                         }
                         else if ( type == DataType.miUINT32 )
                         {
-                                int[] out2 = new int[nElements];
+                                int[] arr = new int[nElements];
                                 
                                 for ( int i = 0; i < nElements; i++ )
                                 {
-                                        out2[i] = (int)Bytes.toUInt(buf, offset, in.getByteOrder());
+                                        arr[i] = (int)Bytes.toUInt(buf, offset, in.getByteOrder());
                                         offset += atomSize;
                                 }
                                 
-                                setData(out2,DataType.miUINT32);
+                                setData(arr,DataType.miUINT32);
                         }
                         else if ( type == DataType.miSINGLE )
                         {
-                                float[] out2 = new float[nElements];
+                                float[] arr = new float[nElements];
                                 
                                 for ( int i = 0; i < nElements; i++ )
                                 {
-                                        out2[i] = Bytes.toFloat(buf, offset, in.getByteOrder());
+                                        arr[i] = Bytes.toFloat(buf, offset, in.getByteOrder());
                                         offset += atomSize;
                                 }
                                 
-                                setData(out2);
+                                setData(arr);
                         }
                 }
                 else
                 {
                         if ( type == DataType.miINT8 )
                         {
-                                byte[] out2 = new byte[nElements];
+                                byte[] arr = new byte[nElements];
                                 
                                 try {
                                         for ( int i = 0; i < nElements; i++ )
                                         {
-                                                out2[i] = (byte)in.readByte();
+                                                arr[i] = (byte)in.readByte();
                                         }
                                 }
                                 catch (IOException e) {
@@ -726,16 +726,16 @@ public class NumericPartSubelement extends AbstractDataElement
                                         return null;
                                 }
                                 
-                                setData(out2,DataType.miINT8);
+                                setData(arr,DataType.miINT8);
                         }
                         else if ( type == DataType.miUINT8 )
                         {
-                                byte[] out2 = new byte[nElements];
+                                byte[] arr = new byte[nElements];
                                 
                                 try {
                                         for ( int i = 0; i < nElements; i++ )
                                         {
-                                                out2[i] = (byte)in.readUnsignedByte();
+                                                arr[i] = (byte)in.readUnsignedByte();
                                         }
                                 }
                                 catch (IOException e) {
@@ -743,16 +743,16 @@ public class NumericPartSubelement extends AbstractDataElement
                                         return null;
                                 }
                                 
-                                setData(out2,DataType.miUINT8);
+                                setData(arr,DataType.miUINT8);
                         }
                         else if ( type == DataType.miINT16 )
                         {
-                                short[] out2 = new short[nElements];
+                                short[] arr = new short[nElements];
                                 
                                 try {
                                         for ( int i = 0; i < nElements; i++ )
                                         {
-                                                out2[i] = in.readShort();
+                                                arr[i] = in.readShort();
                                         }
                                 }
                                 catch (IOException e) {
@@ -760,16 +760,16 @@ public class NumericPartSubelement extends AbstractDataElement
                                         return null;
                                 }
                                 
-                                setData(out2,DataType.miINT16);
+                                setData(arr,DataType.miINT16);
                         }
                         else if ( type == DataType.miUINT16 )
                         {
-                                char[] out2 = new char[nElements];
+                                char[] arr = new char[nElements];
                                 
                                 try {
                                         for ( int i = 0; i < nElements; i++ )
                                         {
-                                                out2[i] = (char)in.readChar();
+                                                arr[i] = (char)in.readChar();
                                         }
                                 }
                                 catch (IOException e) {
@@ -777,16 +777,16 @@ public class NumericPartSubelement extends AbstractDataElement
                                         return null;
                                 }
                                 
-                                setData(out2);
+                                setData(arr);
                         }
                         else if ( type == DataType.miINT32 )
                         {
-                                int[] out2 = new int[nElements];
+                                int[] arr = new int[nElements];
                                 
                                 try {
                                         for ( int i = 0; i < nElements; i++ )
                                         {
-                                                out2[i] = in.readInt();
+                                                arr[i] = in.readInt();
                                         }
                                 }
                                 catch (IOException e) {
@@ -794,16 +794,16 @@ public class NumericPartSubelement extends AbstractDataElement
                                         return null;
                                 }
                                 
-                                setData(out2,DataType.miINT32);
+                                setData(arr,DataType.miINT32);
                         }
                         else if ( type == DataType.miUINT32 )
                         {
-                                int[] out2 = new int[nElements];
+                                int[] arr = new int[nElements];
                                 
                                 try {
                                         for ( int i = 0; i < nElements; i++ )
                                         {
-                                                out2[i] = (int)in.readUnsignedInt();
+                                                arr[i] = (int)in.readUnsignedInt();
                                         }
                                 }
                                 catch (IOException e) {
@@ -811,16 +811,16 @@ public class NumericPartSubelement extends AbstractDataElement
                                         return null;
                                 }
                                 
-                                setData(out2,DataType.miUINT32);
+                                setData(arr,DataType.miUINT32);
                         }
                         else if ( type == DataType.miDOUBLE )
                         {
-                                double[] out2 = new double[nElements];
+                                double[] arr = new double[nElements];
                                 
                                 try {
                                         for ( int i = 0; i < nElements; i++ )
                                         {
-                                                out2[i] = in.readDouble();
+                                                arr[i] = in.readDouble();
                                         }
                                 }
                                 catch (IOException e) {
@@ -828,7 +828,7 @@ public class NumericPartSubelement extends AbstractDataElement
                                         return null;
                                 }
                                 
-                                setData(out2,false);
+                                setData(arr,false);
                         }
                         
                         try {

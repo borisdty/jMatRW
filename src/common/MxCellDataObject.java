@@ -9,7 +9,7 @@ import java.util.Arrays;
  */
 public class MxCellDataObject extends MxDataObject
 {
-        public MxDataObject[] data_vec;
+        private MxDataObject[] data_vec;
         
         public MxCellDataObject()
         {
@@ -76,5 +76,32 @@ public class MxCellDataObject extends MxDataObject
         {
                 // TODO: Do range check
                 return data_vec[i];
+        }
+        
+        public MxDataObject getCell( int... indices )
+        {
+                if ( indices.length != dimensions.length )
+                        throw new IllegalArgumentException("MxDataObject::getCell: " +
+                                        "number of arguments is " + indices.length + "," +
+                                        "but Cell has " + dimensions.length + "dimensions");
+                
+                // TODO: Do range check
+                int idx = indices[dimensions.length-1];
+                for ( int k = dimensions.length-2; k >= 0; k-- )
+                {
+                        idx = idx*dimensions[k] + indices[k];
+                }
+                
+                return data_vec[idx];
+        }
+        
+        /**
+         * The order in the provided linear cell-array must be compatible
+         * to the linear array indexing scheme of Matlab.
+         * @param data_vec
+         */
+        public void setCells(MxDataObject[] data_vec)
+        {
+                this.data_vec = data_vec;
         }
 }

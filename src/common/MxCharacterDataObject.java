@@ -7,7 +7,7 @@ package common;
  */
 public class MxCharacterDataObject extends MxDataObject
 {
-        public String data_string;
+        private String data_string;
         
         public MxCharacterDataObject()
         {
@@ -64,5 +64,10 @@ public class MxCharacterDataObject extends MxDataObject
         public String getString()
         {
                 return data_string;
+        }
+        
+        public void setString(String str)
+        {
+                this.data_string = str;
         }
 }

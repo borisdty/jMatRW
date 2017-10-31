@@ -15,11 +15,11 @@ import subelements.base.ShortArray;
  */
 public class MxNumericDataObject extends MxDataObject
 {
-        public DataArray real_part;
-        public DataArray imag_part;
+        protected DataArray real_part;
+        protected DataArray imag_part;
         
-        public DataType  real_data_type;
-        public DataType  imag_data_type;
+        protected DataType  real_data_type;
+        protected DataType  imag_data_type;
         
         public MxNumericDataObject()
         {
@@ -283,7 +283,7 @@ public class MxNumericDataObject extends MxDataObject
                         throw new ClassIDException(MxClassID.mxUINT8_CLASS,classType);
                 }
                 
-                if ( logical == false )
+                if ( isLogical() == false )
                 {
                         System.err.println( "\tThe logical-flag was not set," +
                                         " but boolean will" +
@@ -313,5 +313,45 @@ public class MxNumericDataObject extends MxDataObject
                         for ( int i = 0; i < dim1; i++ )
                                 out[i][j] = in[i+j*dim1];
                 return out;
+        }
+        
+        public DataArray getRealDataStorage()
+        {
+                return real_part;
+        }
+        
+        public DataArray getImagDataStorage()
+        {
+                return imag_part;
+        }
+        
+        public DataType getRealDataStorageType()
+        {
+                return real_data_type;
+        }
+        
+        public DataType getImagDataStorageType()
+        {
+                return imag_data_type;
+        }
+        
+        public void setRealDataStorageType(DataType type)
+        {
+                this.real_data_type = type;
+        }
+        
+        public void setImagDataStorageType(DataType type)
+        {
+                this.imag_data_type = type;
+        }
+        
+        public void setRealDataStorage(DataArray real_part)
+        {
+                this.real_part = real_part;
+        }
+        
+        public void setImagDataStorage(DataArray imag_part)
+        {
+                this.imag_part = imag_part;
         }
 }
