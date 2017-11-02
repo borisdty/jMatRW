@@ -56,4 +56,18 @@ public class MxStructDataObject extends MxDataObject
                 
                 return true;
         }
+        
+        public MxDataObject getField(String name)
+        {
+                if (name == null)
+                        return null;
+                
+                for ( MxDataObject obj : data_vec)
+                {
+                        if (name.equals(obj.getName()))
+                                return obj;
+                }
+                
+                return null;
+        }
 }
