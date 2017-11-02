@@ -25,7 +25,7 @@ public class DataTypeException extends Exception
          */
         public DataTypeException(DataType expected, DataType actual)
         {
-                super( "Expected DataType: " + expected.toString() +
+                super( "Expected DataType: " + expected.toString() + " " +
                                 "Actual DataType: " + actual.toString() );
         }
 }
