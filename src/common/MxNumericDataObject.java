@@ -132,17 +132,24 @@ public class MxNumericDataObject extends MxDataObject
                         throw new ClassIDException(MxClassID.mxDOUBLE_CLASS,classType);
                 }
                 
+                if ( isComplex() == false )
+                {
+                        System.err.println( "\tVariable " + getName() + " is not of complex type" +
+                                        " and has therefore no imaginary part stored." );
+                        return null;
+                }
+                
                 int dim1 = dimensions[0];
                 int dim2 = dimensions[1];
                 
-                double[] d = imag_part.toDoubleArray(real_data_type.isSignedType()).getData();
+                double[] d = imag_part.toDoubleArray(imag_data_type.isSignedType()).getData();
                 
                 double[][] data = reshape(d,dim1,dim2);
                 
                 return data;
         }
         
-        long[] getInt64LinearArray() throws ClassIDException, LossOfPrecisionException
+        public long[] getInt64LinearArray() throws ClassIDException, LossOfPrecisionException
         {
                 if ( classType != MxClassID.mxINT64_CLASS )
                 {
@@ -159,7 +166,7 @@ public class MxNumericDataObject extends MxDataObject
                 return data;
         }
         
-        int[] getInt32LinearArray() throws ClassIDException, LossOfPrecisionException
+        public int[] getInt32LinearArray() throws ClassIDException, LossOfPrecisionException
         {
                 if ( classType != MxClassID.mxINT32_CLASS )
                 {
@@ -176,7 +183,7 @@ public class MxNumericDataObject extends MxDataObject
                 return data;
         }
         
-        long[] getUInt32LinearArray() throws ClassIDException, LossOfPrecisionException
+        public long[] getUInt32LinearArray() throws ClassIDException, LossOfPrecisionException
         {
                 if ( classType != MxClassID.mxUINT32_CLASS )
                 {
@@ -198,7 +205,7 @@ public class MxNumericDataObject extends MxDataObject
                 return data;
         }
         
-        short[] getInt16LinearArray() throws ClassIDException, LossOfPrecisionException
+        public short[] getInt16LinearArray() throws ClassIDException, LossOfPrecisionException
         {
                 if ( classType != MxClassID.mxINT16_CLASS )
                 {
@@ -215,7 +222,7 @@ public class MxNumericDataObject extends MxDataObject
                 return data;
         }
         
-        int[] getUInt16LinearArray() throws ClassIDException, LossOfPrecisionException
+        public int[] getUInt16LinearArray() throws ClassIDException, LossOfPrecisionException
         {
                 if ( classType != MxClassID.mxUINT16_CLASS )
                 {
@@ -237,7 +244,7 @@ public class MxNumericDataObject extends MxDataObject
                 return data;
         }
         
-        byte[] getInt8LinearArray() throws ClassIDException, LossOfPrecisionException
+        public byte[] getInt8LinearArray() throws ClassIDException, LossOfPrecisionException
         {
                 if ( classType != MxClassID.mxINT8_CLASS )
                 {
@@ -254,7 +261,7 @@ public class MxNumericDataObject extends MxDataObject
                 return data;
         }
         
-        short[] getUInt8LinearArray() throws ClassIDException, LossOfPrecisionException
+        public short[] getUInt8LinearArray() throws ClassIDException, LossOfPrecisionException
         {
                 if ( classType != MxClassID.mxUINT8_CLASS )
                 {
@@ -276,7 +283,7 @@ public class MxNumericDataObject extends MxDataObject
                 return data;
         }
         
-        boolean[] getBooleanLinearArray() throws ClassIDException, LossOfPrecisionException
+        public boolean[] getBooleanLinearArray() throws ClassIDException, LossOfPrecisionException
         {
                 if ( classType != MxClassID.mxUINT8_CLASS )
                 {
