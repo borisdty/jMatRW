@@ -9,39 +9,25 @@ import java.util.Arrays;
  */
 public class MxDataObject
 {
-        // TODO: List below Would need to be extended by
-        // boolean sparse;
-        // to read out the sparse bit flag.
         private boolean     complex;
         private boolean     global;
         private boolean     logical;
+        private boolean     sparse;
         
         protected MxClassID   classType;
         protected int[]       dimensions;
         protected String      name;
         private   int         numOfElements;
         
-        // 'data' is used to return the final result in MxFileReader, in case
-        // of matrixes; that is if the returned data is a MxNumericDataObject (not in
-        // case of cell, struct, character array or sparse objects)
-        // Since it can be any kind of matrix (different types and dimensions), it is of type Object.
-        // In addition, the matrix data is also returned in the vectors/arrays 'real_part'
-        // and 'imag_part' in MxNumericDataObject.
-        // Since it is of type Object, it should not be considered in method equals(...) further down.
-        /**
-         * the general data object is currently not used in the code (zero references)
-         */
-        public  Object      data;
-        
         public MxDataObject()
         {
                 complex    = false;
                 global     = false;
                 logical    = false;
+                sparse     = false;
                 classType  = MxClassID.mxDOUBLE_CLASS;
                 dimensions = new int[]{0,0};
                 name       = "";
-                data       = null;
                 numOfElements = 0;
         }
         
@@ -50,10 +36,10 @@ public class MxDataObject
                 complex    = other.complex;
                 global     = other.global;
                 logical    = other.logical;
+                sparse     = other.sparse;
                 classType  = other.classType;
                 dimensions = other.dimensions;
                 name       = other.name;
-                data       = other.data;
                 numOfElements = other.numOfElements;
         }
         
@@ -66,11 +52,11 @@ public class MxDataObject
                 int result = 1;
                 result = prime * result + ((classType == null) ? 0 : classType.hashCode());
                 result = prime * result + (complex ? 1231 : 1237);
-                result = prime * result + ((data == null) ? 0 : data.hashCode());
                 result = prime * result + Arrays.hashCode(dimensions);
                 result = prime * result + (global ? 1231 : 1237);
                 result = prime * result + (logical ? 1231 : 1237);
                 result = prime * result + ((name == null) ? 0 : name.hashCode());
+                result = prime * result + (sparse ? 1231 : 1237);
                 return result;
         }
         
@@ -100,6 +86,9 @@ public class MxDataObject
                 if (logical != other.logical)
                         return false;
                 
+                if (sparse != other.sparse)
+                        return false;
+                
                 if (classType != other.classType)
                         return false;
                 
@@ -115,16 +104,6 @@ public class MxDataObject
                 {
                         return false;
                 }
-                
-//                if (data == null)
-//                {
-//                        if (other.data != null)
-//                                return false;
-//                }
-//                else if (!data.equals(other.data))
-//                {
-//                        return false;
-//                }
                 
                 return true;
         }
@@ -142,6 +121,11 @@ public class MxDataObject
         public boolean isLogical()
         {
                 return logical;
+        }
+        
+        public boolean isSparse()
+        {
+                return sparse;
         }
         
         public MxClassID getClassID()
@@ -177,6 +161,11 @@ public class MxDataObject
         public void setLogical(boolean logical)
         {
                 this.logical = logical;
+        }
+        
+        public void setSparse(boolean sparse)
+        {
+                this.sparse = sparse;
         }
         
         public void setClassID(MxClassID classID)
