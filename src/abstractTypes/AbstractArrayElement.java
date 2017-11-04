@@ -49,12 +49,12 @@ public abstract class AbstractArrayElement extends AbstractDataElement
         
         protected final boolean matlabNameConvention = true;
         
-        public AbstractArrayElement()
+        protected AbstractArrayElement()
         {
                 this(false);
         }
         
-        public AbstractArrayElement(boolean compFlag)
+        protected AbstractArrayElement(boolean compFlag)
         {
                 super(DataType.miMATRIX,compFlag);
                 arrayFlagsSubelement       = new ArrayFlagsSubelement();
@@ -63,7 +63,7 @@ public abstract class AbstractArrayElement extends AbstractDataElement
                 size_ArraySpecificDataPart = 0;
         }
         
-        public void setDimensions(int[] dims)
+        protected void setDimensions(int[] dims)
         {
                 dimensionsArraySubelement.setData(dims);
                 
@@ -85,17 +85,17 @@ public abstract class AbstractArrayElement extends AbstractDataElement
                 setNumOfSpecDataBytes(size_ArraySpecificDataPart);
         }
         
-        public void setClassType(MxClassID type)
+        protected void setClassType(MxClassID type)
         {
                 arrayFlagsSubelement.setClassType(type);
         }
         
-        public void setSparseFlag(boolean flag)
+        protected void setSparseFlag(boolean flag)
         {
                 arrayFlagsSubelement.setSparseFlag(flag);
         }
         
-        public void setComplexFlag(boolean flag)
+        protected void setComplexFlag(boolean flag)
         {
                 arrayFlagsSubelement.setComplexFlag(flag);
         }
@@ -105,12 +105,12 @@ public abstract class AbstractArrayElement extends AbstractDataElement
                 arrayFlagsSubelement.setGlobalFlag(flag);
         }
         
-        public void setLogicalFlag(boolean flag)
+        protected void setLogicalFlag(boolean flag)
         {
                 arrayFlagsSubelement.setLogicalFlag(flag);
         }
         
-        public void setNzMax(int n)
+        protected void setNzMax(int n)
         {
                 arrayFlagsSubelement.setNzMax(n);
         }
@@ -163,7 +163,7 @@ public abstract class AbstractArrayElement extends AbstractDataElement
          * derived Array classes (consisting of Array Flags, Dimensions array,
          * Array Name and array-specific Data Element).
          */
-        public byte[] dataToByteArray(ByteOrder byte_order)
+        protected byte[] dataToByteArray(ByteOrder byte_order)
         {
                 byte[] data = specDataToByteArray(byte_order);
                 

@@ -28,7 +28,7 @@ public class CompressedDataElement extends AbstractDataElement
                 dataObj = uncompressedData;
         }
         
-        public byte[] dataToByteArray(ByteOrder byte_order)
+        protected byte[] dataToByteArray(ByteOrder byte_order)
         {
                 StreamCompressor streamCompressor = new StreamCompressor();
                 

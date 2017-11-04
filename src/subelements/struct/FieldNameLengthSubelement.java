@@ -43,7 +43,7 @@ public class FieldNameLengthSubelement extends AbstractDataElement
                 return str;
         }
         
-        public byte[] dataToByteArray(ByteOrder byte_order)
+        protected byte[] dataToByteArray(ByteOrder byte_order)
         {
                 byte[] b      = new byte[4];
                 int    data   = dataObj;
