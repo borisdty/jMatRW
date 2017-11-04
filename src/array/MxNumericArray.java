@@ -346,7 +346,7 @@ public class MxNumericArray extends AbstractArrayElement
                 super.setNumOfSpecDataBytes(numBytes);
         }
         
-        public byte[] specDataToByteArray(ByteOrder byte_order)
+        protected byte[] specDataToByteArray(ByteOrder byte_order)
         {
                 byte[] b      = new byte[super.getNumOfSpecDataBytes()];
                 int    offset = 0;

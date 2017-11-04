@@ -13,6 +13,7 @@ public class MxEmptyArray extends AbstractArrayElement
 {
         public MxEmptyArray()
         {
+                super();
                 super.setNumOfDataElementBytes(0);
         }
         
@@ -21,7 +22,7 @@ public class MxEmptyArray extends AbstractArrayElement
          * overwritten, but must be implemented as declared abstract in
          * super-class AbstractArrayElement.
          */
-        public byte[] specDataToByteArray(ByteOrder byte_order)
+        protected byte[] specDataToByteArray(ByteOrder byte_order)
         {
                 // Maybe it should be new byte[0] ???
                 // But it is not supposed to be called at all, anyway

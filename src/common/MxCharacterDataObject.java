@@ -11,6 +11,8 @@ public class MxCharacterDataObject extends MxDataObject
         
         public MxCharacterDataObject()
         {
+                super();
+                classType = MxClassID.mxCHAR_CLASS;
                 data_string = null;
         }
         
@@ -18,6 +20,11 @@ public class MxCharacterDataObject extends MxDataObject
         {
                 super(other);
                 
+                /*
+                 * If other has not defined the classType, we can do it now
+                 * If other has another classType defined, we overwrite it here anyway
+                 * */
+                classType = MxClassID.mxCHAR_CLASS;
                 data_string = null;
         }
         

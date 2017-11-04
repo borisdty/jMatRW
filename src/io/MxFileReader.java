@@ -22,7 +22,6 @@ import common.MxEmptyDataObject;
 import common.MxNumericDataObject;
 import common.MxSparseDataObject;
 import common.MxStructDataObject;
-import exception.ClassIDException;
 import exception.DataTypeException;
 import subelements.common.ArrayFlagsSubelement;
 import subelements.common.ArrayNameSubelement;
@@ -240,6 +239,7 @@ public class MxFileReader implements Closeable
                         obj.setComplex   ( flagField.getComplexFlag() );
                         obj.setGlobal    ( flagField.getGlobalFlag()  );
                         obj.setLogical   ( flagField.getLogicalFlag() );
+                        obj.setSparse    ( flagField.getSparseFlag()  );
                         obj.setClassID   ( flagField.getClassType()   );
                         obj.setDimensions(  dimField.getDimensions()  );
                         obj.setName      ( nameField.getName()        );
@@ -314,6 +314,7 @@ public class MxFileReader implements Closeable
                 dataObject.setComplex   ( flagField.getComplexFlag() );
                 dataObject.setGlobal    ( flagField.getGlobalFlag()  );
                 dataObject.setLogical   ( flagField.getLogicalFlag() );
+                dataObject.setSparse    ( flagField.getSparseFlag()  );
                 dataObject.setClassID   ( flagField.getClassType()   );
                 dataObject.setDimensions(  dimField.getDimensions()  );
                 dataObject.setName(       nameField.getName()        );
@@ -339,58 +340,6 @@ public class MxFileReader implements Closeable
                                         if ( numDataObject.getRealDataStorage().length() != numDataObject.getImagDataStorage().length() )
                                                 return null; // TODO: Better to throw an Exception ???
                                 }
-                                
-                                // Generating MATLAB equivalent (i.e. as finally
-                                // visible in MATLAB workspace)
-                                
-                                double[][][] data = new double[2][][];
-                                data[1] = null;
-                                
-                                // Transform all data to double type
-                                try {
-                                        data[0] = numDataObject.getRealDoubleMtx();
-                                }
-                                catch (ClassIDException e) {
-                                        e.printStackTrace();
-                                        return null;
-                                }
-                                
-                                if ( numDataObject.isComplex() )
-                                {
-                                        try {
-                                                data[1] = numDataObject.getImagDoubleMtx();
-                                        }
-                                        catch (ClassIDException e) {
-                                                e.printStackTrace();
-                                                return null;
-                                        }
-                                }
-                                
-//                              int dim1 = numDataObject.dimensions[0];
-//                              int dim2 = numDataObject.dimensions[1];
-//
-//                                try {
-//                                        double[] d = numDataObject.real_part.toDoubleArray(numDataObject.real_data_type.isSignedType()).getData();
-//                                        data[0] = reshape(d,dim1,dim2);
-//                                }
-//                                catch (ClassIDException e) {
-//                                        e.printStackTrace();
-//                                        return null;
-//                                }
-//                                
-//                                if ( numDataObject.complex == true )
-//                                {
-//                                        try {
-//                                                double[] d = numDataObject.imag_part.toDoubleArray(numDataObject.imag_data_type.isSignedType()).getData();
-//                                                data[1] = reshape(d,dim1,dim2);
-//                                        }
-//                                        catch (Exception e) {
-//                                                e.printStackTrace();
-//                                                return null;
-//                                        }
-//                                }
-                                
-                                numDataObject.data = data;
                                 
                                 return numDataObject;
                         }
@@ -424,15 +373,6 @@ public class MxFileReader implements Closeable
                         {
                                 MxCellDataObject cellDataObject = new MxCellDataObject(dataObject);
                                 
-//                                int nElements = 1;
-//                                
-//                                int[] dimensions = cellDataObject.getDimensions();
-//                                
-//                                for ( int i = 0; i < dimensions.length; i++ )
-//                                {
-//                                        nElements *= dimensions[i];
-//                                }
-//                                
                                 cellDataObject.setCells( evalCellArrayData(in,cellDataObject.getNumOfElements()) );
                                 
                                 return cellDataObject;
@@ -458,8 +398,6 @@ public class MxFileReader implements Closeable
                                 String[]             names = null;
                                 try {
                                         namesField = new FieldNamesSubelement().read(mi,len);
-                                        
-                                        // TODO: Is this list ordered in any way??
                                         names      = namesField.listNames();
                                 } catch (DataTypeException e) {
                                         // TODO Auto-generated catch block
@@ -467,7 +405,7 @@ public class MxFileReader implements Closeable
                                 }
                                 
                                 // Evaluate struct data fields
-                                structDataObject.data_vec = evalStructArrayData(in,names);
+                                structDataObject.setAllFields( evalStructArrayData(in,names) );
                                 
                                 return structDataObject;
                         }

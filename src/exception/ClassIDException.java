@@ -25,7 +25,7 @@ public class ClassIDException extends Exception
          */
         public ClassIDException(MxClassID expected, MxClassID actual)
         {
-                super( "Expected MxClassID: " + expected.toString() +
+                super( "Expected MxClassID: " + expected.toString() + " " +
                                 "Actual MxClassID: " + actual.toString() );
         }
 }

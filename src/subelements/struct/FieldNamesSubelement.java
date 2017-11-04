@@ -11,14 +11,27 @@ import abstractTypes.AbstractDataElement;
 import common.DataTagFieldReader;
 import common.DataType;
 import exception.DataTypeException;
+import exception.UniqueFieldNameExpection;
 
 /**
+ * This sub-element specifies the name of each field in the structure
+ * as a series of 8-bit (miINT8) character arrays.
+ * The value of the FieldNameLengthSubelement determines the length
+ * of each field name array (max 32 bytes). Field names must be NULL-terminated,
+ * which allows names having at most 31 characters. 
+ * 
+ * |----------------------------------------------
+ * |      Data Type      |    Number of Bytes    |  Tag (2 x 32 bit)
+ * |----------------------------------------------
+ * |                                             |
+ * |                Field Names                  | Data Part
+ * |---------------------------------------------|
  *
  * @author Boris Dortschy (<a href="mailto:bodo.pub@gmail.com">bodo.pub@gmail.com</a>)
- *
  */
 public class FieldNamesSubelement extends AbstractDataElement
 {
+        // ArrayList is a sequential list. So, insertion and retrieval order is the same.
         private ArrayList<String> dataObj;
         private int               maxNameLength;
         
@@ -47,8 +60,19 @@ public class FieldNamesSubelement extends AbstractDataElement
                         name = new String(cs,0,fs);
                 }
                 
+                // Structure field names must be unique
                 if ( exist(name) == true )
-                        return maxNameLength;
+                {
+                        try
+                        {
+                                throw new UniqueFieldNameExpection("FieldnamesSubelement::addData(String): " +
+                                                "Duplicate Structure field names: " + name);
+                        } catch (Exception e)
+                        {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                        }
+                }
                 
                 dataObj.add(name);
                 maxNameLength = Math.max(maxNameLength, name.length()+1);
@@ -111,13 +135,16 @@ public class FieldNamesSubelement extends AbstractDataElement
                 
                 int width = maxNameLength;
                 
-                int b = ((size/super.sizeOfDataType())%(width/super.sizeOfDataType())) * super.sizeOfDataType();
-                int padding = (b != 0) ? width-b : 0;
+                // Alternative: padding = ((s+(w-1))/w)*w - s
+                //                      = w-1-rem(s+(w-1),w)
+                //                      = w-1-(s+(w-1))%w
+                int b = size % width;
+                int padding = (width-b) % width;
                 
                 return padding;
         }
         
-        public byte[] dataToByteArray(ByteOrder byte_order)
+        protected byte[] dataToByteArray(ByteOrder byte_order)
         {
                 byte[] b      = new byte[getDataLength()];
                 int    offset = 0;

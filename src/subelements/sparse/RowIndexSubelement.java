@@ -53,7 +53,7 @@ public class RowIndexSubelement extends AbstractDataElement
                 return str;
         }
         
-        public byte[] dataToByteArray(ByteOrder byte_order)
+        protected byte[] dataToByteArray(ByteOrder byte_order)
         {
                 byte[] b      = new byte[getDataLength()];
                 int[]  data   = dataObj;

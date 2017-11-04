@@ -2,6 +2,8 @@ package common;
 
 import java.util.Arrays;
 
+import exception.IllegalDimensionException;
+
 /**
  *
  * @author Boris Dortschy (<a href="mailto:bodo.pub@gmail.com">bodo.pub@gmail.com</a>)
@@ -13,6 +15,8 @@ public class MxCellDataObject extends MxDataObject
         
         public MxCellDataObject()
         {
+                super();
+                classType = MxClassID.mxCELL_CLASS;
                 data_vec = null;
         }
         
@@ -20,6 +24,11 @@ public class MxCellDataObject extends MxDataObject
         {
                 super(other);
                 
+                /*
+                 * If other has not defined the classType, we can do it now
+                 * If other has another classType defined, we overwrite it here anyway
+                 * */
+                classType = MxClassID.mxCELL_CLASS;
                 data_vec = null;
         }
         
@@ -78,19 +87,23 @@ public class MxCellDataObject extends MxDataObject
                 return data_vec[i];
         }
         
-        public MxDataObject getCell( int... indices )
+        public MxDataObject getCell( int... indices ) throws IllegalDimensionException
         {
                 if ( indices.length != dimensions.length )
-                        throw new IllegalArgumentException("MxDataObject::getCell: " +
+                        throw new IllegalDimensionException("MxDataObject::getCell: " +
                                         "number of arguments is " + indices.length + "," +
                                         "but Cell has " + dimensions.length + "dimensions");
                 
-                // TODO: Do range check
+                // TODO: Do proper range check
                 int idx = indices[dimensions.length-1];
                 for ( int k = dimensions.length-2; k >= 0; k-- )
                 {
                         idx = idx*dimensions[k] + indices[k];
                 }
+                
+                if ( idx >= getNumOfElements() )
+                        throw new IllegalDimensionException("MxDataObject::getCell: " +
+                                        "requested cell element is out-of-range");
                 
                 return data_vec[idx];
         }

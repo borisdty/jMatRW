@@ -1174,6 +1174,17 @@ public class MxArrayIOTest
                 assertEquals(s1, refStruct1, m1);
                 assertEquals(s2, refStruct1, m2);
                 assertEquals(s3, m1, m2);
+                
+                MxDataObject dataObjVec = ((MxStructDataObject)m1).getField("vec");
+                MxDataObject dataObjMat = ((MxStructDataObject)m1).getField("mat");
+                
+                assertEquals("Check class 1", dataObjVec.getClass(), refVec4.getClass());
+                assertEquals("Check class 2", dataObjMat.getClass(), refMat4.getClass());
+                assertEquals("Check class ID 1", dataObjVec.getClassID(), refVec4.getClassID());
+                assertEquals("Check class ID 2", dataObjMat.getClassID(), refMat4.getClassID());
+                
+                assertEquals("Check field 1", refVec4, dataObjVec);
+                assertEquals("Check field 2", refMat4, dataObjMat);
         }
         
         @Test
