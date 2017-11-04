@@ -1155,7 +1155,7 @@ public class MxArrayIOTest
                 refStruct1.setClassID(MxClassID.mxSTRUCT_CLASS);
                 refStruct1.setDimensions(new int[]{1,1});
                 refStruct1.setName(varname);
-                refStruct1.data_vec   = new MxDataObject[] {refVec4,refMat4};
+                refStruct1.setAllFields( new MxDataObject[] {refVec4,refMat4} );
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
@@ -1469,7 +1469,7 @@ public class MxArrayIOTest
                 refStruct1.setClassID(MxClassID.mxSTRUCT_CLASS);
                 refStruct1.setDimensions(new int[]{1,1});
                 refStruct1.setName("StructX_a");
-                refStruct1.data_vec   = new MxDataObject[] {refvec,refmat};
+                refStruct1.setAllFields( new MxDataObject[] {refvec,refmat} );
                 
                 MxFileReader jfreader = new MxFileReader(writeName);
                 MxFileReader mfreader = new MxFileReader(readName);
