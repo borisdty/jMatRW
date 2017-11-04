@@ -1,7 +1,7 @@
 package common;
 
 import exception.ClassIDException;
-import exception.LossOfPrecisionException;
+import exception.StorageArrayTypeException;
 import subelements.base.ByteArray;
 import subelements.base.DataArray;
 import subelements.base.IntArray;
@@ -149,7 +149,7 @@ public class MxNumericDataObject extends MxDataObject
                 return data;
         }
         
-        public long[] getInt64LinearArray() throws ClassIDException, LossOfPrecisionException
+        public long[] getInt64LinearArray() throws ClassIDException, StorageArrayTypeException
         {
                 if ( classType != MxClassID.mxINT64_CLASS )
                 {
@@ -157,7 +157,7 @@ public class MxNumericDataObject extends MxDataObject
                 }
                 
                 if ( !(real_part instanceof LongArray) )
-                        throw new LossOfPrecisionException();
+                        throw new StorageArrayTypeException();
                 
                 LongArray longArray = (LongArray)real_part;
                 
@@ -166,7 +166,7 @@ public class MxNumericDataObject extends MxDataObject
                 return data;
         }
         
-        public int[] getInt32LinearArray() throws ClassIDException, LossOfPrecisionException
+        public int[] getInt32LinearArray() throws ClassIDException, StorageArrayTypeException
         {
                 if ( classType != MxClassID.mxINT32_CLASS )
                 {
@@ -174,7 +174,7 @@ public class MxNumericDataObject extends MxDataObject
                 }
                 
                 if ( !(real_part instanceof IntArray) )
-                        throw new LossOfPrecisionException();
+                        throw new StorageArrayTypeException();
                 
                 IntArray intArray = (IntArray)real_part;
                 
@@ -183,7 +183,7 @@ public class MxNumericDataObject extends MxDataObject
                 return data;
         }
         
-        public long[] getUInt32LinearArray() throws ClassIDException, LossOfPrecisionException
+        public long[] getUInt32LinearArray() throws ClassIDException, StorageArrayTypeException
         {
                 if ( classType != MxClassID.mxUINT32_CLASS )
                 {
@@ -191,7 +191,7 @@ public class MxNumericDataObject extends MxDataObject
                 }
                 
                 if ( !(real_part instanceof IntArray) )
-                        throw new LossOfPrecisionException();
+                        throw new StorageArrayTypeException();
                 
                 IntArray intArray = (IntArray)real_part;
                 
@@ -205,7 +205,7 @@ public class MxNumericDataObject extends MxDataObject
                 return data;
         }
         
-        public short[] getInt16LinearArray() throws ClassIDException, LossOfPrecisionException
+        public short[] getInt16LinearArray() throws ClassIDException, StorageArrayTypeException
         {
                 if ( classType != MxClassID.mxINT16_CLASS )
                 {
@@ -213,7 +213,7 @@ public class MxNumericDataObject extends MxDataObject
                 }
                 
                 if ( !(real_part instanceof ShortArray) )
-                        throw new LossOfPrecisionException();
+                        throw new StorageArrayTypeException();
                 
                 ShortArray shortArray = (ShortArray)real_part;
                 
@@ -222,7 +222,7 @@ public class MxNumericDataObject extends MxDataObject
                 return data;
         }
         
-        public int[] getUInt16LinearArray() throws ClassIDException, LossOfPrecisionException
+        public int[] getUInt16LinearArray() throws ClassIDException, StorageArrayTypeException
         {
                 if ( classType != MxClassID.mxUINT16_CLASS )
                 {
@@ -230,7 +230,7 @@ public class MxNumericDataObject extends MxDataObject
                 }
                 
                 if ( !(real_part instanceof ShortArray) )
-                        throw new LossOfPrecisionException();
+                        throw new StorageArrayTypeException();
                 
                 ShortArray shortArray = (ShortArray)real_part;
                 
@@ -244,7 +244,7 @@ public class MxNumericDataObject extends MxDataObject
                 return data;
         }
         
-        public byte[] getInt8LinearArray() throws ClassIDException, LossOfPrecisionException
+        public byte[] getInt8LinearArray() throws ClassIDException, StorageArrayTypeException
         {
                 if ( classType != MxClassID.mxINT8_CLASS )
                 {
@@ -252,7 +252,7 @@ public class MxNumericDataObject extends MxDataObject
                 }
                 
                 if ( !(real_part instanceof ByteArray) )
-                        throw new LossOfPrecisionException();
+                        throw new StorageArrayTypeException();
                 
                 ByteArray byteArray = (ByteArray)real_part;
                 
@@ -261,7 +261,7 @@ public class MxNumericDataObject extends MxDataObject
                 return data;
         }
         
-        public short[] getUInt8LinearArray() throws ClassIDException, LossOfPrecisionException
+        public short[] getUInt8LinearArray() throws ClassIDException, StorageArrayTypeException
         {
                 if ( classType != MxClassID.mxUINT8_CLASS )
                 {
@@ -269,7 +269,7 @@ public class MxNumericDataObject extends MxDataObject
                 }
                 
                 if ( !(real_part instanceof ByteArray) )
-                        throw new LossOfPrecisionException();
+                        throw new StorageArrayTypeException();
                 
                 ByteArray byteArray = (ByteArray)real_part;
                 
@@ -283,7 +283,7 @@ public class MxNumericDataObject extends MxDataObject
                 return data;
         }
         
-        public boolean[] getBooleanLinearArray() throws ClassIDException, LossOfPrecisionException
+        public boolean[] getBooleanLinearArray() throws ClassIDException, StorageArrayTypeException
         {
                 if ( classType != MxClassID.mxUINT8_CLASS )
                 {
@@ -299,7 +299,7 @@ public class MxNumericDataObject extends MxDataObject
                 }
                 
                 if ( !(real_part instanceof ByteArray) )
-                        throw new LossOfPrecisionException();
+                        throw new StorageArrayTypeException();
                 
                 ByteArray byteArray = (ByteArray)real_part;
                 
