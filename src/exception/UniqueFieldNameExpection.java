@@ -12,14 +12,14 @@ public class UniqueFieldNameExpection extends Exception
         private static final long serialVersionUID = 1L;
         
         /**
-         * Construct a LossOfPrecisionException.
+         * Construct a UniqueFieldNameExpection.
          */
         public UniqueFieldNameExpection() {
                 super();
         }
         
         /**
-         * Construct a LossOfPrecisionException with detail message.
+         * Construct a UniqueFieldNameExpection with detail message.
          *
          * @param msg  detail message
          */
