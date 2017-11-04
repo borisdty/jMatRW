@@ -9,10 +9,12 @@ import java.util.Arrays;
  */
 public class MxStructDataObject extends MxDataObject
 {
-        public MxDataObject[] data_vec;
+        private MxDataObject[] data_vec;
         
         public MxStructDataObject()
         {
+                super();
+                classType = MxClassID.mxSTRUCT_CLASS;
                 data_vec = null;
         }
         
@@ -20,6 +22,11 @@ public class MxStructDataObject extends MxDataObject
         {
                 super(other);
                 
+                /*
+                 * If other has not defined the classType, we can do it now
+                 * If other has another classType defined, we overwrite it here anyway
+                 * */
+                classType = MxClassID.mxSTRUCT_CLASS;
                 data_vec = null;
         }
         
@@ -69,5 +76,15 @@ public class MxStructDataObject extends MxDataObject
                 }
                 
                 return null;
+        }
+        
+        public MxDataObject[] getAllFields()
+        {
+                return data_vec;
+        }
+        
+        public void setAllFields(MxDataObject[] data_vec)
+        {
+                this.data_vec = data_vec;
         }
 }

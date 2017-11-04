@@ -15,6 +15,8 @@ public class MxCellDataObject extends MxDataObject
         
         public MxCellDataObject()
         {
+                super();
+                classType = MxClassID.mxCELL_CLASS;
                 data_vec = null;
         }
         
@@ -22,6 +24,11 @@ public class MxCellDataObject extends MxDataObject
         {
                 super(other);
                 
+                /*
+                 * If other has not defined the classType, we can do it now
+                 * If other has another classType defined, we overwrite it here anyway
+                 * */
+                classType = MxClassID.mxCELL_CLASS;
                 data_vec = null;
         }
         
