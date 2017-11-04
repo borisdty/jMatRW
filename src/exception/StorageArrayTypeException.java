@@ -3,27 +3,27 @@ package exception;
 import java.lang.Exception;
 
 /**
- * Thrown when data type conversion leads possibly to a Loss Of Precision 
+ * Thrown when the storage array type is not suitable for the requested integer array return type
  *
  * @author Boris Dortschy (<a href="mailto:bodo.pub@gmail.com">bodo.pub@gmail.com</a>)
  */
-public class LossOfPrecisionException extends Exception
+public class StorageArrayTypeException extends Exception
 {
         private static final long serialVersionUID = 1L;
         
         /**
-         * Construct a LossOfPrecisionException.
+         * Construct a StorageArrayTypeException.
          */
-        public LossOfPrecisionException() {
+        public StorageArrayTypeException() {
                 super();
         }
         
         /**
-         * Construct a LossOfPrecisionException with detail message.
+         * Construct a StorageArrayTypeException with detail message.
          *
          * @param msg  detail message
          */
-        public LossOfPrecisionException(String msg)
+        public StorageArrayTypeException(String msg)
         {
                 super(msg);
         }
